@@ -2,7 +2,7 @@
   "use strict";
 
   const PALETTE_SIZE = 8;
-  const IDLE_RGB = [27, 28, 42];
+  const IDLE_RGB = [226, 228, 236];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const els = {
@@ -112,26 +112,57 @@
     return Math.sqrt(sum / data.length);
   }
 
+  function contrastInk(r, g, b) {
+    const luma = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    return luma > 0.62 ? "#1c1c24" : "#f7f4ee";
+  }
+
+  function lift(value, gain) {
+    return Math.min(1, Math.pow(Math.max(0, value) * gain, 0.55));
+  }
+
+  function hslToRgb(h, s, l) {
+    const sat = Math.max(0, Math.min(1, s));
+    const light = Math.max(0, Math.min(1, l));
+    const hue = ((h % 360) + 360) % 360;
+    const c = (1 - Math.abs(2 * light - 1)) * sat;
+    const hp = hue / 60;
+    const x = c * (1 - Math.abs((hp % 2) - 1));
+    let r1 = 0;
+    let g1 = 0;
+    let b1 = 0;
+    if (hp < 1) [r1, g1, b1] = [c, x, 0];
+    else if (hp < 2) [r1, g1, b1] = [x, c, 0];
+    else if (hp < 3) [r1, g1, b1] = [0, c, x];
+    else if (hp < 4) [r1, g1, b1] = [0, x, c];
+    else if (hp < 5) [r1, g1, b1] = [x, 0, c];
+    else [r1, g1, b1] = [c, 0, x];
+    const m = light - c / 2;
+    return [clamp255((r1 + m) * 255), clamp255((g1 + m) * 255), clamp255((b1 + m) * 255)];
+  }
+
   /**
    * Map smoothed audio features to RGB.
-   * Bass lifts red, mids green, treble blue. Loudness scales overall
-   * lightness so quiet rooms stay dark and peaks bloom brighter.
-   * A small centroid mix keeps bright sounds from turning muddy.
+   * Bass → red, mids → green, treble → blue. Bands are boosted so quiet
+   * rooms still hue-shift, and saturation stays high so the field is
+   * colorful instead of gray.
    */
   function featuresToRgb(features) {
-    const loud = Math.min(1, features.rms * 3.4);
-    const lift = 36 + loud * 210;
-    const sat = 0.42 + loud * 0.58;
+    const loud = Math.min(1, lift(features.rms, 8.5));
+    const bass = lift(features.bass, 6.2);
+    const mid = lift(features.mid, 5.6);
+    const treble = lift(features.treble, 6.8);
+    const weight = bass + mid + treble;
 
-    let r = IDLE_RGB[0] + lift * (0.18 + features.bass * 1.15) * sat;
-    let g = IDLE_RGB[1] + lift * (0.16 + features.mid * 1.05) * sat;
-    let b = IDLE_RGB[2] + lift * (0.22 + features.treble * 1.2) * sat;
+    const hue =
+      weight < 0.05
+        ? 200 + features.centroid * 90
+        : (bass * 8 + mid * 128 + treble * 218) / weight + features.centroid * 18;
 
-    r += features.centroid * 12;
-    g += features.centroid * 28;
-    b += features.centroid * 48;
+    const sat = Math.min(0.95, 0.42 + loud * 0.4 + Math.min(0.28, weight * 0.35));
+    const light = 0.5 + (1 - loud) * 0.16;
 
-    return [clamp255(r), clamp255(g), clamp255(b)];
+    return hslToRgb(hue, sat, light);
   }
 
   function setStatus(message) {
@@ -144,8 +175,9 @@
     const rgb = `rgb(${r}, ${g}, ${b})`;
 
     document.documentElement.style.setProperty("--live", hex);
+    document.documentElement.style.setProperty("--ink", contrastInk(r, g, b));
     els.colorField.style.backgroundColor = rgb;
-    els.colorCore.style.background = `radial-gradient(circle at 35% 30%, rgba(255,255,255,0.28), transparent 42%), ${rgb}`;
+    els.colorCore.style.background = `radial-gradient(circle at 35% 28%, rgba(255,255,255,0.78), transparent 48%), ${rgb}`;
     els.hexValue.textContent = hex;
     els.rgbValue.textContent = rgb;
     els.rValue.textContent = String(r);
@@ -240,12 +272,12 @@
     const width = els.canvas.clientWidth;
     const height = 128;
     ctx2d.clearRect(0, 0, width, height);
-    ctx2d.fillStyle = "rgba(255,255,255,0.03)";
+    ctx2d.fillStyle = "rgba(255,255,255,0.35)";
     ctx2d.fillRect(0, 0, width, height);
 
     ctx2d.beginPath();
     ctx2d.lineWidth = 2;
-    ctx2d.strokeStyle = `rgba(${displayed.r}, ${displayed.g}, ${displayed.b}, 0.92)`;
+    ctx2d.strokeStyle = `rgba(${Math.max(40, displayed.r - 70)}, ${Math.max(40, displayed.g - 70)}, ${Math.max(40, displayed.b - 50)}, 0.9)`;
 
     const slice = width / data.length;
     for (let i = 0; i < data.length; i += 1) {
@@ -270,7 +302,7 @@
     const treble = bandEnergy(audio.freqData, sampleRate, fftSize, 2000, 8000);
     const centroid = spectralCentroid(audio.freqData, sampleRate, fftSize);
 
-    const amount = reduceMotion ? 0.28 : 0.1;
+    const amount = reduceMotion ? 0.38 : 0.22;
     smooth.rms = ema(smooth.rms, rms, amount);
     smooth.bass = ema(smooth.bass, bass, amount);
     smooth.mid = ema(smooth.mid, mid, amount);
@@ -278,17 +310,17 @@
     smooth.centroid = ema(smooth.centroid, centroid, amount);
 
     const [r, g, b] = featuresToRgb(smooth);
-    const colorAmount = reduceMotion ? 0.4 : 0.14;
+    const colorAmount = reduceMotion ? 0.5 : 0.28;
     smooth.r = ema(smooth.r, r, colorAmount);
     smooth.g = ema(smooth.g, g, colorAmount);
     smooth.b = ema(smooth.b, b, colorAmount);
 
     const out = [clamp255(smooth.r), clamp255(smooth.g), clamp255(smooth.b)];
     paintColor(out[0], out[1], out[2]);
-    setMeter(els.loudnessFill, els.loudnessValue, Math.min(1, smooth.rms * 3.2));
-    setMeter(els.bassFill, els.bassValue, smooth.bass);
-    setMeter(els.midFill, els.midValue, smooth.mid);
-    setMeter(els.trebleFill, els.trebleValue, smooth.treble);
+    setMeter(els.loudnessFill, els.loudnessValue, Math.min(1, lift(smooth.rms, 8.5)));
+    setMeter(els.bassFill, els.bassValue, lift(smooth.bass, 6.2));
+    setMeter(els.midFill, els.midValue, lift(smooth.mid, 5.6));
+    setMeter(els.trebleFill, els.trebleValue, lift(smooth.treble, 6.8));
     rememberColor(out[0], out[1], out[2]);
     drawWaveform(audio.timeData);
   }
@@ -319,7 +351,11 @@
       await teardown(false);
 
       const stream = await navigator.mediaDevices.getUserMedia({
-        audio: { echoCancellation: true, noiseSuppression: true },
+        audio: {
+          echoCancellation: false,
+          noiseSuppression: false,
+          autoGainControl: true,
+        },
         video: false,
       });
 
@@ -330,7 +366,7 @@
       const source = context.createMediaStreamSource(stream);
       const analyser = context.createAnalyser();
       analyser.fftSize = 2048;
-      analyser.smoothingTimeConstant = 0.65;
+      analyser.smoothingTimeConstant = 0.32;
       // Intentionally not connected to destination — no speaker feedback.
       source.connect(analyser);
 
