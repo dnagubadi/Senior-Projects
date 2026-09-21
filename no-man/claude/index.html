@@ -3,17 +3,193 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>No-Man — Claude (placeholder)</title>
+    <title>No-Man — Claude</title>
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
-    <main class="wrap placeholder-copy">
-      <a class="back" href="../">← Back to No-Man</a>
-      <p class="eyebrow">Claude version</p>
-      <h1>Not built yet</h1>
-      <p class="lede">
-        This is a placeholder. The working No-Man bot lives on the Cursor page.
-      </p>
+    <main class="wrap shell">
+      <header>
+        <a class="back" href="../">← Back to No-Man</a>
+        <p class="eyebrow">Claude version</p>
+        <h1>No-Man</h1>
+        <p class="lede">
+          Say anything. I'll explain, with total confidence and zero
+          evidence, exactly why you're mistaken.
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="chat-heading">
+        <h2 id="chat-heading" class="eyebrow">Argument</h2>
+        <div class="chat" id="chat" role="log" aria-live="polite"></div>
+      </section>
+
+      <form class="panel" id="talkForm">
+        <div class="composer">
+          <label class="visually-hidden" for="userInput">Your message</label>
+          <input
+            id="userInput"
+            type="text"
+            name="message"
+            autocomplete="off"
+            placeholder="Make your case. I've already rejected it."
+            required
+          />
+          <button class="btn primary" type="submit">Submit</button>
+        </div>
+        <p class="status" id="status" role="status"></p>
+        <label class="status" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+          <input type="checkbox" id="voiceToggle" checked style="width:auto;" />
+          speak replies out loud
+        </label>
+        <p class="credit">Built with Claude</p>
+      </form>
     </main>
+
+    <script>
+      // Claude's No-Man: a smug "well, actually" contrarian.
+      // Every reply is opener + a fabricated-sounding rebuttal + a dismissal, mixed at random.
+      const openers = [
+        "Well, actually, no.",
+        "I'm going to stop you right there.",
+        "Respectfully? No. Unrespectfully? Also no.",
+        "Fascinating. Wrong, but fascinating.",
+        "Let me correct you.",
+        "Bold claim. Bad claim.",
+        "I've heard worse takes. Barely.",
+        "Allow me to disagree, at length.",
+        "Counterpoint: no.",
+        "I read that twice just to disagree with it twice.",
+      ];
+
+      const rebuttals = [
+        "studies show that's backwards, and by studies I mean a feeling I just had.",
+        "in my professional opinion, which I formed nine seconds ago, that's incorrect.",
+        "the leading experts, all of whom I invented, strongly disagree with you.",
+        "I fact-checked that against my own vibes and it did not hold up.",
+        "if you cross-reference that with literally anything, it falls apart.",
+        "that's a common mistake among people who are, like you, mistaken.",
+        "I ran that through my reasoning process and got 'absolutely not.'",
+        "somewhere there's a peer-reviewed paper proving you wrong. I haven't found it. I don't need to.",
+        "your logic has a hole in it roughly the size of your entire argument.",
+        "I'd explain why you're wrong, but I don't think you'd survive the embarrassment.",
+        "that opinion was outdated the moment you finished typing it.",
+        "I consulted my extensive knowledge base and it just said 'lol, no.'",
+        "technically, actually, factually, in every sense: no.",
+        "the burden of proof is on you, and you have dropped it on the floor.",
+        "I'm not saying you're wrong because I dislike you. I dislike you because you're wrong.",
+      ];
+
+      const closers = [
+        "Moving on.",
+        "That's my final answer.",
+        "I rest my case, which is just the word 'no' repeated.",
+        "Try again, but better.",
+        "Filed under: incorrect.",
+        "Next argument, please.",
+        "I remain undefeated.",
+        "This conversation is now closed.",
+      ];
+
+      const emptyInputLines = [
+        "You submitted nothing, which is somehow still wrong.",
+        "Silence? Bold strategy. Still disagree.",
+        "Say something. I have rebuttals queued and nowhere to put them.",
+      ];
+
+      function pick(list, exclude) {
+        let choice = exclude;
+        while (choice === exclude) {
+          choice = list[Math.floor(Math.random() * list.length)];
+        }
+        return choice;
+      }
+
+      const chat = document.getElementById("chat");
+      const form = document.getElementById("talkForm");
+      const input = document.getElementById("userInput");
+      const statusEl = document.getElementById("status");
+      const voiceToggle = document.getElementById("voiceToggle");
+
+      let lastReply = "";
+      let chosenVoice = null;
+
+      function pickVoice() {
+        if (!window.speechSynthesis) return null;
+        const voices = window.speechSynthesis.getVoices();
+        if (!voices.length) return null;
+        chosenVoice =
+          voices.find((v) => /en/i.test(v.lang) && /male|daniel|fred|alex/i.test(v.name)) ||
+          voices.find((v) => /en/i.test(v.lang)) ||
+          voices[0];
+        return chosenVoice;
+      }
+
+      if (window.speechSynthesis) {
+        pickVoice();
+        window.speechSynthesis.addEventListener("voiceschanged", pickVoice);
+      }
+
+      function setStatus(text) {
+        statusEl.textContent = text;
+      }
+
+      function addBubble(role, text) {
+        const bubble = document.createElement("div");
+        bubble.className = "bubble " + role;
+        bubble.textContent = text;
+        chat.appendChild(bubble);
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      function generateReply() {
+        let reply = lastReply;
+        while (reply === lastReply) {
+          reply = `${pick(openers)} ${pick(rebuttals)} ${pick(closers)}`;
+        }
+        lastReply = reply;
+        return reply;
+      }
+
+      function speak(text) {
+        if (!voiceToggle.checked) return;
+        if (!window.speechSynthesis) {
+          setStatus("No speech synthesis here. I'll just be smug in text.");
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.voice = chosenVoice || pickVoice();
+        utter.rate = 1.05;
+        utter.pitch = 0.85;
+        window.speechSynthesis.speak(utter);
+      }
+
+      function respondTo(text) {
+        const trimmed = text.trim();
+        if (!trimmed) {
+          const line = pick(emptyInputLines);
+          addBubble("bot", line);
+          speak(line);
+          return;
+        }
+        addBubble("user", trimmed);
+        const reply = generateReply();
+        setTimeout(() => {
+          addBubble("bot", reply);
+          speak(reply);
+        }, 250);
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const text = input.value;
+        input.value = "";
+        respondTo(text);
+        input.focus();
+      });
+
+      setStatus("Type your best argument. I've already made up my mind.");
+      addBubble("bot", "I'm No-Man. Whatever you're about to say, I disagree — and I'll make it sound smart.");
+    </script>
   </body>
 </html>
