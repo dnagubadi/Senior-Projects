@@ -1,0 +1,259 @@
+:root {
+  --bg: #0d0b0a;
+  --panel: #161311;
+  --ink: #f4ece4;
+  --muted: #9a8e84;
+  --line: rgba(244, 236, 228, 0.12);
+  --accent: #ff3b2f;
+  --warn: #f5c518;
+  --glass: rgba(22, 19, 17, 0.78);
+  --radius: 22px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(1200px 700px at 12% -10%, rgba(255, 59, 47, 0.18), transparent 55%),
+    radial-gradient(900px 600px at 100% 0%, rgba(245, 197, 24, 0.08), transparent 50%),
+    var(--bg);
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  width: min(980px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 36px 0 64px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 7vw, 5.2rem);
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+}
+
+.lede {
+  max-width: 40rem;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 1.05rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 180px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--glass);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 59, 47, 0.55);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.card .meta {
+  margin-top: auto;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warn);
+}
+
+.card.placeholder .meta {
+  color: var(--muted);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.shell {
+  display: grid;
+  gap: 16px;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--glass);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.chat {
+  min-height: min(52vh, 480px);
+  max-height: 58vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bubble {
+  max-width: 78%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.bubble.user {
+  align-self: flex-end;
+  background: #2a2420;
+}
+
+.bubble.bot {
+  align-self: flex-start;
+  background: #3a1410;
+  border: 1px solid rgba(255, 59, 47, 0.35);
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+}
+
+input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #0f0d0c;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font: inherit;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #2a2420;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  background: #3a332e;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 700;
+}
+
+.btn.mic[aria-pressed="true"] {
+  background: var(--warn);
+  color: #111;
+  border-color: transparent;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.status {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.credit {
+  margin: 14px 0 0;
+  color: var(--warn);
+  font-size: 0.85rem;
+}
+
+.placeholder-copy {
+  max-width: 36rem;
+}
+
+.placeholder-copy h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (max-width: 800px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .composer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  input[type="text"] {
+    grid-column: 1 / -1;
+  }
+}

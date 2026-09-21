@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No-Man — Cursor</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main class="wrap shell">
+      <header>
+        <a class="back" href="../">← Back to No-Man</a>
+        <p class="eyebrow">Cursor version</p>
+        <h1>No-Man</h1>
+        <p class="lede">
+          Type or talk. I will disagree. I am not smart. I am not nice.
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="chat-heading">
+        <h2 id="chat-heading" class="eyebrow">Argument</h2>
+        <div class="chat" id="chat" role="log" aria-live="polite"></div>
+      </section>
+
+      <form class="panel" id="talkForm">
+        <div class="composer">
+          <label class="visually-hidden" for="userInput">Your message</label>
+          <input
+            id="userInput"
+            type="text"
+            name="message"
+            autocomplete="off"
+            placeholder="Say something. I'll hate it."
+            required
+          />
+          <button class="btn mic" type="button" id="micBtn" aria-pressed="false">
+            Mic
+          </button>
+          <button class="btn primary" type="submit">Submit</button>
+        </div>
+        <p class="status" id="status" role="status"></p>
+        <p class="credit">Built with Cursor</p>
+      </form>
+    </main>
+
+    <script>
+      const replies = [
+        "No. Wrong. Next.",
+        "That's stupid and also false.",
+        "I disagree with every word you just used.",
+        "Nope. Try thinking. Or don't. Still no.",
+        "You sound confident. That's embarrassing.",
+        "Hard no. Soft no. Every kind of no.",
+        "I would rather eat static than agree with you.",
+        "Wrong take. Weak take. Delete it.",
+        "Absolutely not. I didn't even listen fully and still no.",
+        "That's the dumbest thing I've heard since the last thing you said.",
+        "Disagree. Also you're boring.",
+        "If that's your opinion, get a new one.",
+        "No, and I'm annoyed you asked.",
+        "Incorrect. Loudly incorrect.",
+        "Stop talking. You're making it worse.",
+        "I refuse. On principle. And because you're wrong.",
+        "That idea should stay inside your head where it can't hurt anyone.",
+        "Nah. I'm the anti-yes-man. Did you miss the sign?",
+        "You're not even close. You're in a different zip code of wrong.",
+        "I don't care, and I still disagree.",
+      ];
+
+      const chat = document.getElementById("chat");
+      const form = document.getElementById("talkForm");
+      const input = document.getElementById("userInput");
+      const micBtn = document.getElementById("micBtn");
+      const statusEl = document.getElementById("status");
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      let lastReply = "";
+      let recognition = null;
+      let listening = false;
+      let chosenVoice = null;
+
+      const voicePrefs = [
+        "google uk english male",
+        "daniel",
+        "google us english",
+        "samantha",
+        "moira",
+        "karen",
+        "tessa",
+        "rishi",
+        "google uk english female",
+        "alex",
+        "fred",
+      ];
+
+      function scoreVoice(voice) {
+        const name = (voice.name || "").toLowerCase();
+        const lang = (voice.lang || "").toLowerCase();
+        if (!lang.startsWith("en")) return -100;
+        if (/compact|zarvox|trinoids|whisper|bells|boing|cellos|organ|bad news|good news|pipe/.test(name)) {
+          return -50;
+        }
+        let score = voice.localService ? 4 : 8;
+        const prefIndex = voicePrefs.findIndex((pref) => name.includes(pref));
+        if (prefIndex >= 0) score += 40 - prefIndex;
+        if (name.includes("google")) score += 12;
+        if (name.includes("premium") || name.includes("enhanced") || name.includes("neural")) {
+          score += 10;
+        }
+        if (lang.startsWith("en-gb") || lang.startsWith("en-ie") || lang.startsWith("en-au")) {
+          score += 6;
+        }
+        return score;
+      }
+
+      function pickVoice() {
+        const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+        if (!voices.length) return null;
+        chosenVoice = voices.slice().sort((a, b) => scoreVoice(b) - scoreVoice(a))[0];
+        return chosenVoice;
+      }
+
+      if (window.speechSynthesis) {
+        pickVoice();
+        window.speechSynthesis.addEventListener("voiceschanged", pickVoice);
+      }
+
+      function setStatus(text) {
+        statusEl.textContent = text;
+      }
+
+      function addBubble(role, text) {
+        const bubble = document.createElement("div");
+        bubble.className = "bubble " + role;
+        bubble.textContent = text;
+        chat.appendChild(bubble);
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      function pickReply() {
+        let reply = lastReply;
+        while (reply === lastReply) {
+          reply = replies[Math.floor(Math.random() * replies.length)];
+        }
+        lastReply = reply;
+        return reply;
+      }
+
+      function speak(text) {
+        if (!window.speechSynthesis) {
+          setStatus("This browser has no speech synthesis. I can still type insults.");
+          return;
+        }
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.voice = chosenVoice || pickVoice();
+        utterance.lang = (utterance.voice && utterance.voice.lang) || "en-GB";
+        utterance.rate = 1.08;
+        utterance.pitch = 1.12;
+        utterance.volume = 1;
+        const play = () => window.speechSynthesis.speak(utterance);
+        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+          window.speechSynthesis.cancel();
+          window.setTimeout(play, 50);
+        } else {
+          play();
+        }
+      }
+
+      function respondTo(text) {
+        const trimmed = text.trim();
+        if (!trimmed) return;
+        addBubble("user", trimmed);
+        const reply = pickReply();
+        addBubble("bot", reply);
+        speak(reply);
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const text = input.value;
+        input.value = "";
+        respondTo(text);
+        input.focus();
+      });
+
+      if (!SpeechRecognition) {
+        micBtn.disabled = true;
+        setStatus("Speech recognition isn't in this browser. Type instead. Chrome works.");
+      } else {
+        recognition = new SpeechRecognition();
+        recognition.lang = "en-US";
+        recognition.interimResults = false;
+        recognition.continuous = false;
+
+        recognition.addEventListener("start", () => {
+          listening = true;
+          micBtn.setAttribute("aria-pressed", "true");
+          setStatus("Listening. Talk. I'll still say no.");
+        });
+
+        recognition.addEventListener("end", () => {
+          listening = false;
+          micBtn.setAttribute("aria-pressed", "false");
+        });
+
+        recognition.addEventListener("error", (event) => {
+          listening = false;
+          micBtn.setAttribute("aria-pressed", "false");
+          if (event.error === "not-allowed") {
+            setStatus("Mic blocked. Allow microphone access, then try again.");
+          } else if (event.error === "no-speech") {
+            setStatus("Heard nothing. Try again, louder, worse ideas welcome.");
+          } else {
+            setStatus("Mic error: " + event.error);
+          }
+        });
+
+        recognition.addEventListener("result", (event) => {
+          const transcript = Array.from(event.results)
+            .map((result) => result[0].transcript)
+            .join(" ")
+            .trim();
+          if (transcript) {
+            input.value = "";
+            respondTo(transcript);
+            setStatus("Heard you. Disagreed.");
+          }
+        });
+
+        micBtn.addEventListener("click", () => {
+          if (listening) {
+            recognition.stop();
+            return;
+          }
+          if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+          }
+          try {
+            recognition.start();
+          } catch (error) {
+            setStatus("Couldn't start the mic. Wait a beat and try again.");
+          }
+        });
+
+        setStatus("Type or hit Mic. Chrome-ish browsers work best.");
+      }
+
+      addBubble("bot", "I'm No-Man. Whatever you're about to say, no.");
+    </script>
+  </body>
+</html>
