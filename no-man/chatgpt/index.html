@@ -1,22 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>No-Man — Lovable</title>
-    <meta http-equiv="refresh" content="0; url=../lovable/" />
-    <link rel="canonical" href="../lovable/" />
-    <link rel="stylesheet" href="../style.css" />
-  </head>
-  <body>
-    <main class="wrap placeholder-copy">
-      <a class="back" href="../lovable/">This version moved to Lovable →</a>
-      <p class="eyebrow">Lovable version</p>
-      <h1>Moved</h1>
-      <p class="lede">
-        The third No-Man is being built with Lovable AI.
-        <a href="../lovable/">Open that page</a>.
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No-Man — The AI That Disagrees</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 80, 80, .15), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(130, 80, 255, .18), transparent 30%),
+        #0b0b0d;
+      color: #f4f4f4;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: min(760px, 100%);
+      border: 2px solid #29292e;
+      background: rgba(18, 18, 21, .94);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, .55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .warning {
+      height: 10px;
+      background: repeating-linear-gradient(
+        135deg,
+        #ff3b30 0 18px,
+        #111 18px 36px
+      );
+    }
+
+    .back-button {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      z-index: 2;
+      color: #8d8d95;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      border: 1px solid #303036;
+      padding: 9px 12px;
+      background: #121215;
+      transition: .15s ease;
+    }
+
+    .back-button:hover {
+      color: #fff;
+      border-color: #ff3b30;
+      transform: translateX(-2px);
+    }
+
+    header {
+      padding: 80px 34px 22px;
+      border-bottom: 1px solid #29292e;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 800;
+      color: #ff5b57;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(48px, 10vw, 88px);
+      line-height: .8;
+      letter-spacing: -6px;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      margin: 20px 0 0;
+      color: #9c9ca3;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+
+    main {
+      padding: 28px 34px 34px;
+    }
+
+    .screen {
+      min-height: 230px;
+      padding: 25px;
+      background: #0e0e10;
+      border: 1px solid #303036;
+      position: relative;
+    }
+
+    .screen::before {
+      content: "NO-MAN // ONLINE";
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: #57575e;
+    }
+
+    .prompt {
+      color: #66666e;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    #response {
+      font-size: clamp(25px, 5vw, 42px);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      max-width: 650px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: #ff3b30;
+      margin-left: 4px;
+      vertical-align: -2px;
+      animation: blink .8s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    input {
+      min-width: 0;
+      flex: 1;
+      background: #17171b;
+      border: 1px solid #34343a;
+      color: white;
+      padding: 17px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #ff3b30;
+      box-shadow: 0 0 0 3px rgba(255, 59, 48, .12);
+    }
+
+    button {
+      border: 0;
+      background: #ff3b30;
+      color: white;
+      font-weight: 900;
+      padding: 0 24px;
+      cursor: pointer;
+      font-size: 14px;
+      letter-spacing: .5px;
+      transition: transform .12s, background .12s;
+    }
+
+    button:hover {
+      background: #ff5147;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      gap: 12px;
+    }
+
+    .hint, .built {
+      color: #5f5f66;
+      font-size: 11px;
+    }
+
+    .built strong {
+      color: #9999a1;
+    }
+
+    .status {
+      color: #ff5b57;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 560px) {
+      header, main { padding-left: 20px; padding-right: 20px; }
+      form { flex-direction: column; }
+      button { padding: 16px; }
+      .controls { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="warning"></div>
+
+    <a href="../" class="back-button">← BACK</a>
+
+    <header>
+      <div class="tag">ARTIFICIAL INTELLIGENCE // UNHELPFUL</div>
+      <h1>NO-MAN</h1>
+      <p class="subtitle">
+        Ask me anything. I'll tell you why you're wrong.
+        I don't need context. I don't need evidence. I just disagree.
       </p>
+    </header>
+
+    <main>
+      <section class="screen" aria-live="polite">
+        <div class="prompt">No-Man says:</div>
+        <div id="response">Go ahead. Say something stupid.<span class="cursor"></span></div>
+      </section>
+
+      <form id="chatForm">
+        <input
+          id="userInput"
+          type="text"
+          autocomplete="off"
+          placeholder="Tell No-Man your brilliant idea..."
+          aria-label="Message No-Man"
+          required
+        >
+        <button type="submit">DISAGREE</button>
+      </form>
+
+      <div class="controls">
+        <span class="hint">ENTER = submit · Voice enabled</span>
+        <span class="status" id="status">Ready to disagree</span>
+      </div>
+
+      <div class="built" style="margin-top:28px;">
+        Built with <strong>Vanilla JavaScript</strong> + Browser TTS
+      </div>
     </main>
-  </body>
+  </div>
+
+  <script>
+    const form = document.getElementById("chatForm");
+    const input = document.getElementById("userInput");
+    const response = document.getElementById("response");
+    const status = document.getElementById("status");
+
+    const responses = [
+      "No. Absolutely not. Try again.",
+      "That's a terrible idea, and somehow you made it sound worse.",
+      "I disagree. Obviously.",
+      "You really thought that was a good point?",
+      "Wrong. Next question.",
+      "Interesting. Still wrong, though.",
+      "That's certainly one way to be incorrect.",
+      "No-Man has reviewed your argument and rejected it.",
+      "I could explain why you're wrong, but I'd rather let you think about it.",
+      "Bold of you to say that while being completely wrong.",
+      "Incorrect. I don't make the rules. I just disagree with them too.",
+      "You have confused confidence with being correct.",
+      "Hard pass. Your argument has been denied.",
+      "That's adorable. Unfortunately, no.",
+      "I disagree so strongly that I'm almost impressed.",
+      "Counterpoint: you're wrong.",
+      "Your opinion has been carefully considered and ignored.",
+      "No.",
+      "Still no.",
+      "Nice try. Absolutely not."
+    ];
+
+    function speak(text) {
+      if (!("speechSynthesis" in window)) return;
+
+      speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1.02;
+      utterance.pitch = 0.75;
+      utterance.volume = 1;
+
+      speechSynthesis.speak(utterance);
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const message = input.value.trim();
+      if (!message) return;
+
+      const answer = responses[Math.floor(Math.random() * responses.length)];
+
+      response.innerHTML = "";
+      status.textContent = "Disagreeing...";
+
+      setTimeout(() => {
+        response.textContent = answer;
+        const cursor = document.createElement("span");
+        cursor.className = "cursor";
+        response.appendChild(cursor);
+
+        status.textContent = "Disagreement delivered";
+        speak(answer);
+      }, 250);
+
+      input.value = "";
+      input.focus();
+    });
+  </script>
+</body>
 </html>

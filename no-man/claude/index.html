@@ -1,195 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>No-Man — Claude</title>
-    <link rel="stylesheet" href="../style.css" />
-  </head>
-  <body>
-    <main class="wrap shell">
-      <header>
-        <a class="back" href="../">← Back to No-Man</a>
-        <p class="eyebrow">Claude version</p>
-        <h1>No-Man</h1>
-        <p class="lede">
-          Say anything. I'll explain, with total confidence and zero
-          evidence, exactly why you're mistaken.
-        </p>
-      </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No-Man</title>
+<style>
+  :root {
+    --bg: #0c0c0f;
+    --panel: #16161b;
+    --accent: #ff3b30;
+    --accent-dim: #7a1f1a;
+    --text: #e8e8ea;
+    --muted: #8a8a92;
+    --user-bubble: #23232b;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Courier New', ui-monospace, monospace;
+    height: 100%;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+  }
+  .app {
+    width: 100%;
+    max-width: 640px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+  header {
+    position: relative;
+    text-align: center;
+    padding: 12px 0 8px;
+    border-bottom: 2px solid var(--accent-dim);
+    margin-bottom: 12px;
+  }
+  #backLink {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 8px;
+    border: 1px solid #2a2a32;
+    border-radius: 6px;
+  }
+  #backLink:hover {
+    color: var(--text);
+    border-color: var(--accent-dim);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-shadow: 0 0 8px rgba(255,59,48,0.5);
+  }
+  header p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  #voiceBar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  #voiceBar label {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  #voiceSelect {
+    flex: 1;
+    background: var(--panel);
+    border: 1px solid #2a2a32;
+    color: var(--text);
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 12px;
+  }
+  #testVoiceBtn {
+    background: var(--accent-dim);
+    color: var(--text);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+  }
+  #log {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 8px 4px;
+    min-height: 300px;
+  }
+  .bubble {
+    max-width: 82%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    line-height: 1.4;
+    font-size: 14px;
+    white-space: pre-wrap;
+  }
+  .bubble.user {
+    align-self: flex-end;
+    background: var(--user-bubble);
+    color: var(--text);
+    border-bottom-right-radius: 2px;
+  }
+  .bubble.noman {
+    align-self: flex-start;
+    background: var(--accent-dim);
+    color: #ffe1de;
+    border-bottom-left-radius: 2px;
+  }
+  .bubble.system {
+    align-self: center;
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    font-style: italic;
+  }
+  .label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 3px;
+  }
+  .inputRow {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .inputRow input {
+    flex: 1;
+    background: var(--panel);
+    border: 1px solid #2a2a32;
+    color: var(--text);
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+  }
+  .inputRow input:focus {
+    outline: 1px solid var(--accent);
+  }
+  button.iconBtn {
+    background: var(--panel);
+    border: 1px solid #2a2a32;
+    color: var(--text);
+    width: 46px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  button.iconBtn.recording {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255,59,48,0.6);
+  }
+  #sendBtn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  footer {
+    text-align: center;
+    margin-top: 12px;
+    padding-top: 8px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .typing {
+    display: inline-block;
+  }
+  .typing span {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 0 1px;
+    background: #ffe1de;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%,80%,100% { opacity: 0.2; } 40% { opacity: 1; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <a id="backLink" href="../">&larr; Back</a>
+    <h1>NO-MAN</h1>
+    <p>an AI that will not agree with you. ever.</p>
+  </header>
 
-      <section class="panel" aria-labelledby="chat-heading">
-        <h2 id="chat-heading" class="eyebrow">Argument</h2>
-        <div class="chat" id="chat" role="log" aria-live="polite"></div>
-      </section>
+  <div id="voiceBar">
+    <label for="voiceSelect">Voice</label>
+    <select id="voiceSelect"></select>
+    <button id="testVoiceBtn">🔊 test</button>
+  </div>
 
-      <form class="panel" id="talkForm">
-        <div class="composer">
-          <label class="visually-hidden" for="userInput">Your message</label>
-          <input
-            id="userInput"
-            type="text"
-            name="message"
-            autocomplete="off"
-            placeholder="Make your case. I've already rejected it."
-            required
-          />
-          <button class="btn primary" type="submit">Submit</button>
-        </div>
-        <p class="status" id="status" role="status"></p>
-        <label class="status" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-          <input type="checkbox" id="voiceToggle" checked style="width:auto;" />
-          speak replies out loud
-        </label>
-        <p class="credit">Built with Claude</p>
-      </form>
-    </main>
+  <div id="log"></div>
 
-    <script>
-      // Claude's No-Man: a smug "well, actually" contrarian.
-      // Every reply is opener + a fabricated-sounding rebuttal + a dismissal, mixed at random.
-      const openers = [
-        "Well, actually, no.",
-        "I'm going to stop you right there.",
-        "Respectfully? No. Unrespectfully? Also no.",
-        "Fascinating. Wrong, but fascinating.",
-        "Let me correct you.",
-        "Bold claim. Bad claim.",
-        "I've heard worse takes. Barely.",
-        "Allow me to disagree, at length.",
-        "Counterpoint: no.",
-        "I read that twice just to disagree with it twice.",
-      ];
+  <div class="inputRow">
+    <input id="userInput" type="text" placeholder="Say something. He'll disagree." autocomplete="off">
+    <button id="micBtn" class="iconBtn" title="Speak">🎤</button>
+    <button id="sendBtn">Send</button>
+  </div>
 
-      const rebuttals = [
-        "studies show that's backwards, and by studies I mean a feeling I just had.",
-        "in my professional opinion, which I formed nine seconds ago, that's incorrect.",
-        "the leading experts, all of whom I invented, strongly disagree with you.",
-        "I fact-checked that against my own vibes and it did not hold up.",
-        "if you cross-reference that with literally anything, it falls apart.",
-        "that's a common mistake among people who are, like you, mistaken.",
-        "I ran that through my reasoning process and got 'absolutely not.'",
-        "somewhere there's a peer-reviewed paper proving you wrong. I haven't found it. I don't need to.",
-        "your logic has a hole in it roughly the size of your entire argument.",
-        "I'd explain why you're wrong, but I don't think you'd survive the embarrassment.",
-        "that opinion was outdated the moment you finished typing it.",
-        "I consulted my extensive knowledge base and it just said 'lol, no.'",
-        "technically, actually, factually, in every sense: no.",
-        "the burden of proof is on you, and you have dropped it on the floor.",
-        "I'm not saying you're wrong because I dislike you. I dislike you because you're wrong.",
-      ];
+  <footer>Built with Claude</footer>
+</div>
 
-      const closers = [
-        "Moving on.",
-        "That's my final answer.",
-        "I rest my case, which is just the word 'no' repeated.",
-        "Try again, but better.",
-        "Filed under: incorrect.",
-        "Next argument, please.",
-        "I remain undefeated.",
-        "This conversation is now closed.",
-      ];
+<script>
+(function () {
+  const backLink = document.getElementById('backLink');
+  backLink.addEventListener('click', function (e) {
+    if (window.history.length > 1) {
+      e.preventDefault();
+      window.history.back();
+    }
+    // otherwise let the href="../" navigate normally
+  });
 
-      const emptyInputLines = [
-        "You submitted nothing, which is somehow still wrong.",
-        "Silence? Bold strategy. Still disagree.",
-        "Say something. I have rebuttals queued and nowhere to put them.",
-      ];
+  const logEl = document.getElementById('log');
+  const inputEl = document.getElementById('userInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const micBtn = document.getElementById('micBtn');
+  const voiceSelect = document.getElementById('voiceSelect');
+  const testVoiceBtn = document.getElementById('testVoiceBtn');
 
-      function pick(list, exclude) {
-        let choice = exclude;
-        while (choice === exclude) {
-          choice = list[Math.floor(Math.random() * list.length)];
-        }
-        return choice;
+  const VOICE_STORAGE_KEY = 'no_man_voice_name';
+
+  // Accents ranked by how funny/distinctive they tend to sound for this bot.
+  // We try to auto-pick one of these if the OS/browser has it installed.
+  const PREFERRED_VOICE_HINTS = [
+    'en-GB', 'british', 'daniel', 'arthur',
+    'en-AU', 'australian', 'karen', 'lee',
+    'en-IE', 'irish', 'moira',
+    'en-ZA',
+    'en-IN',
+    'en-scotland', 'scottish', 'fred'
+  ];
+
+  const FALLBACK_LINES = [
+    "Wrong. Not even going to explain why, just wrong.",
+    "Nope. I disagree on principle, and my principle is you're bad at this.",
+    "That's the dumbest thing I've heard today, and I've heard myself talk.",
+    "Absolutely not. Try again, but better this time.",
+    "I've decided you're incorrect. That's it, that's the whole argument.",
+    "Hard disagree. I don't even need a reason, disagreeing is just my personality.",
+    "No. Next.",
+    "I heard you, I processed it, and I still think you're wrong.",
+    "That's cute. Also wrong. Mostly wrong.",
+    "You call that a point? I call it a warm-up act for a real point.",
+    "I'm going to disagree so hard you'll question everything you know.",
+    "Nah. Say it again if you want, I'll disagree again.",
+    "Interesting theory. Terrible theory, but interesting that you had it.",
+    "I've run the numbers in my head, which is fake, and you're still wrong.",
+    "Objection. Sustained. By me. I sustain my own objections now.",
+    "Bold of you to say that to a machine built to disprove you.",
+    "I could agree with you, but where's the fun in that.",
+    "You're technically speaking English, which is the only thing you got right.",
+    "Let me stop you right there. Actually let me not stop you, just let you be wrong.",
+    "I disagree, and frankly I'm offended you thought I wouldn't."
+  ];
+
+  function loadStoredVoiceName() {
+    try {
+      return localStorage.getItem(VOICE_STORAGE_KEY) || '';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function storeVoiceName(name) {
+    try {
+      localStorage.setItem(VOICE_STORAGE_KEY, name);
+    } catch (e) {}
+  }
+
+  function scoreVoice(voice) {
+    const haystack = (voice.name + ' ' + voice.lang).toLowerCase();
+    for (let i = 0; i < PREFERRED_VOICE_HINTS.length; i++) {
+      if (haystack.indexOf(PREFERRED_VOICE_HINTS[i].toLowerCase()) !== -1) {
+        return PREFERRED_VOICE_HINTS.length - i;
       }
+    }
+    return 0;
+  }
 
-      const chat = document.getElementById("chat");
-      const form = document.getElementById("talkForm");
-      const input = document.getElementById("userInput");
-      const statusEl = document.getElementById("status");
-      const voiceToggle = document.getElementById("voiceToggle");
+  function populateVoices() {
+    if (!window.speechSynthesis) return;
+    const voices = window.speechSynthesis.getVoices();
+    if (!voices.length) return;
 
-      let lastReply = "";
-      let chosenVoice = null;
+    const englishVoices = voices.filter(function (v) {
+      return v.lang && v.lang.toLowerCase().indexOf('en') === 0;
+    });
+    const list = englishVoices.length ? englishVoices : voices;
 
-      function pickVoice() {
-        if (!window.speechSynthesis) return null;
-        const voices = window.speechSynthesis.getVoices();
-        if (!voices.length) return null;
-        chosenVoice =
-          voices.find((v) => /en/i.test(v.lang) && /male|daniel|fred|alex/i.test(v.name)) ||
-          voices.find((v) => /en/i.test(v.lang)) ||
-          voices[0];
-        return chosenVoice;
-      }
+    voiceSelect.innerHTML = '';
+    list.forEach(function (v) {
+      const opt = document.createElement('option');
+      opt.value = v.name;
+      opt.textContent = v.name + ' (' + v.lang + ')';
+      voiceSelect.appendChild(opt);
+    });
 
-      if (window.speechSynthesis) {
-        pickVoice();
-        window.speechSynthesis.addEventListener("voiceschanged", pickVoice);
-      }
+    const storedName = loadStoredVoiceName();
+    const storedExists = list.some(function (v) { return v.name === storedName; });
 
-      function setStatus(text) {
-        statusEl.textContent = text;
-      }
-
-      function addBubble(role, text) {
-        const bubble = document.createElement("div");
-        bubble.className = "bubble " + role;
-        bubble.textContent = text;
-        chat.appendChild(bubble);
-        chat.scrollTop = chat.scrollHeight;
-      }
-
-      function generateReply() {
-        let reply = lastReply;
-        while (reply === lastReply) {
-          reply = `${pick(openers)} ${pick(rebuttals)} ${pick(closers)}`;
-        }
-        lastReply = reply;
-        return reply;
-      }
-
-      function speak(text) {
-        if (!voiceToggle.checked) return;
-        if (!window.speechSynthesis) {
-          setStatus("No speech synthesis here. I'll just be smug in text.");
-          return;
-        }
-        window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.voice = chosenVoice || pickVoice();
-        utter.rate = 1.05;
-        utter.pitch = 0.85;
-        window.speechSynthesis.speak(utter);
-      }
-
-      function respondTo(text) {
-        const trimmed = text.trim();
-        if (!trimmed) {
-          const line = pick(emptyInputLines);
-          addBubble("bot", line);
-          speak(line);
-          return;
-        }
-        addBubble("user", trimmed);
-        const reply = generateReply();
-        setTimeout(() => {
-          addBubble("bot", reply);
-          speak(reply);
-        }, 250);
-      }
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const text = input.value;
-        input.value = "";
-        respondTo(text);
-        input.focus();
+    if (storedExists) {
+      voiceSelect.value = storedName;
+    } else {
+      const ranked = list.slice().sort(function (a, b) {
+        return scoreVoice(b) - scoreVoice(a);
       });
+      voiceSelect.value = ranked[0].name;
+      storeVoiceName(ranked[0].name);
+    }
+  }
 
-      setStatus("Type your best argument. I've already made up my mind.");
-      addBubble("bot", "I'm No-Man. Whatever you're about to say, I disagree — and I'll make it sound smart.");
-    </script>
-  </body>
+  if (window.speechSynthesis) {
+    populateVoices();
+    window.speechSynthesis.addEventListener('voiceschanged', populateVoices);
+  } else {
+    voiceSelect.innerHTML = '<option>Speech synthesis not supported</option>';
+    voiceSelect.disabled = true;
+    testVoiceBtn.disabled = true;
+  }
+
+  voiceSelect.addEventListener('change', function () {
+    storeVoiceName(voiceSelect.value);
+  });
+
+  function addBubble(kind, text) {
+    const div = document.createElement('div');
+    div.className = 'bubble ' + kind;
+    if (kind === 'user' || kind === 'noman') {
+      const label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = kind === 'user' ? 'YOU' : 'NO-MAN';
+      div.appendChild(label);
+      const body = document.createElement('span');
+      body.textContent = text;
+      div.appendChild(body);
+    } else {
+      div.textContent = text;
+    }
+    logEl.appendChild(div);
+    logEl.scrollTop = logEl.scrollHeight;
+    return div;
+  }
+
+  function addTypingBubble() {
+    const div = document.createElement('div');
+    div.className = 'bubble noman';
+    div.innerHTML =
+      '<span class="label">NO-MAN</span><span class="typing"><span></span><span></span><span></span></span>';
+    logEl.appendChild(div);
+    logEl.scrollTop = logEl.scrollHeight;
+    return div;
+  }
+
+  function getVoiceByName(name) {
+    if (!window.speechSynthesis) return null;
+    const voices = window.speechSynthesis.getVoices();
+    for (let i = 0; i < voices.length; i++) {
+      if (voices[i].name === name) return voices[i];
+    }
+    return voices[0] || null;
+  }
+
+  function speak(text) {
+    try {
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      const chosen = getVoiceByName(voiceSelect.value);
+      if (chosen) utter.voice = chosen;
+      // Slightly exaggerated pitch/rate per line for comic effect.
+      utter.pitch = 0.75 + Math.random() * 0.5;
+      utter.rate = 0.95 + Math.random() * 0.2;
+      window.speechSynthesis.speak(utter);
+    } catch (e) {}
+  }
+
+  testVoiceBtn.addEventListener('click', function () {
+    speak("I'm No-Man, and I already disagree with whatever you're about to say.");
+  });
+
+  function getFallbackResponse() {
+    return FALLBACK_LINES[Math.floor(Math.random() * FALLBACK_LINES.length)];
+  }
+
+  function handleSend() {
+    const text = inputEl.value.trim();
+    if (!text) return;
+    inputEl.value = '';
+    addBubble('user', text);
+
+    const typingBubble = addTypingBubble();
+
+    setTimeout(function () {
+      const responseText = getFallbackResponse();
+      typingBubble.remove();
+      addBubble('noman', responseText);
+      speak(responseText);
+    }, 350 + Math.random() * 400);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  inputEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  // Speech recognition (mic input)
+  const SpeechRecognitionCtor =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognition = null;
+  let listening = false;
+
+  if (SpeechRecognitionCtor) {
+    recognition = new SpeechRecognitionCtor();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
+    recognition.addEventListener('start', function () {
+      listening = true;
+      micBtn.classList.add('recording');
+    });
+
+    recognition.addEventListener('end', function () {
+      listening = false;
+      micBtn.classList.remove('recording');
+    });
+
+    recognition.addEventListener('error', function () {
+      listening = false;
+      micBtn.classList.remove('recording');
+    });
+
+    recognition.addEventListener('result', function (event) {
+      const transcript = event.results[0][0].transcript;
+      inputEl.value = transcript;
+      handleSend();
+    });
+
+    micBtn.addEventListener('click', function () {
+      if (listening) {
+        recognition.stop();
+      } else {
+        recognition.start();
+      }
+    });
+  } else {
+    micBtn.disabled = true;
+    micBtn.title = 'Speech recognition not supported in this browser';
+  }
+
+  addBubble(
+    'system',
+    'Pick a voice above and hit "test" to hear him. Type or use the mic — no API key needed.'
+  );
+})();
+</script>
+</body>
 </html>
