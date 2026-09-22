@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catan Dojo — an intense personal AI trainer for Settlers of Catan." />
+  <title>Catan Dojo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to dojo</a>
+
+  <div class="dust" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <section id="intro" class="intro" aria-labelledby="intro-title">
+    <div class="intro-lanterns" aria-hidden="true">
+      <span class="lantern"></span>
+      <span class="lantern"></span>
+      <span class="lantern"></span>
+    </div>
+    <p class="intro-kicker">Championship preparation</p>
+    <h1 id="intro-title">Catan Dojo</h1>
+    <p class="intro-sub">Coach Atlas is waiting on the mats. Count the odds. Build positions that survive bad rolls.</p>
+    <button type="button" id="enter-dojo" class="enter-btn">Enter the Dojo</button>
+    <p class="intro-hint">Voice optional. Keyboard ready. Your record stays on this device.</p>
+  </section>
+
+  <header id="hud" class="hud" hidden>
+    <div class="hud-brand">
+      <span class="hud-mark" aria-hidden="true"></span>
+      <strong>Catan Dojo</strong>
+    </div>
+    <dl class="hud-stats">
+      <div><dt>Rank</dt><dd id="hud-rank">White Belt</dd></div>
+      <div><dt>XP</dt><dd id="hud-xp">0</dd></div>
+      <div><dt>Streak</dt><dd id="hud-streak">0</dd></div>
+      <div><dt>Focus</dt><dd id="hud-focus">Gym floor</dd></div>
+    </dl>
+    <div class="hud-actions">
+      <button type="button" id="stop-speech" class="ghost-btn" hidden aria-label="Stop speaking">Silence</button>
+      <button type="button" id="back-gym" class="ghost-btn" hidden aria-label="Back to gym">Gym</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="gym" class="gym" hidden aria-hidden="true" aria-label="Dojo gym floor">
+      <div class="gym-stage">
+        <div class="back-wall" aria-hidden="true">
+          <div class="wood-planks"></div>
+          <div class="banners">
+            <div class="banner"><span>Odds</span></div>
+            <div class="banner gold"><span>Position</span></div>
+            <div class="banner"><span>Timing</span></div>
+          </div>
+          <div class="trophy-shelf">
+            <div class="shelf-board"></div>
+            <div class="trophy t1"></div>
+            <div class="trophy t2"></div>
+            <div class="trophy t3"></div>
+          </div>
+          <div class="industrial-lights">
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+            <span class="bulb"></span>
+          </div>
+        </div>
+
+        <div class="mats" aria-hidden="true"></div>
+        <div class="chalk-haze" aria-hidden="true"></div>
+
+        <button type="button" class="hotspot chalkboard-hot" data-station="tactics" aria-describedby="tease-tactics">
+          <span class="object chalkboard" aria-hidden="true">
+            <span class="chalk-frame"></span>
+            <span class="chalk-grid"></span>
+            <span class="chalk-hex"></span>
+            <span class="chalk-hex h2"></span>
+            <span class="chalk-hex h3"></span>
+            <span class="chalk-writing">6 · 8 · PORT</span>
+          </span>
+          <span class="hot-label">Tactics Lab</span>
+          <span class="hot-tease" id="tease-tactics">Read the board. One move. No hoping.</span>
+        </button>
+
+        <button type="button" class="hotspot bag-hot" data-station="drills" aria-describedby="tease-drills">
+          <span class="object bag" aria-hidden="true">
+            <span class="chain"></span>
+            <span class="bag-body"></span>
+            <span class="bag-wrap"></span>
+          </span>
+          <span class="hot-label">Strategy Drills</span>
+          <span class="hot-tease" id="tease-drills">One question. Your reasoning. A better line.</span>
+        </button>
+
+        <button type="button" class="hotspot ring-hot" data-station="spar" aria-describedby="tease-spar">
+          <span class="object ring" aria-hidden="true">
+            <span class="ring-floor"></span>
+            <span class="ring-post p1"></span>
+            <span class="ring-post p2"></span>
+            <span class="ring-post p3"></span>
+            <span class="ring-post p4"></span>
+            <span class="rope r-top"></span>
+            <span class="rope r-mid"></span>
+            <span class="rope r-bot"></span>
+            <span class="corner-pad"></span>
+          </span>
+          <span class="hot-label">Sparring Match</span>
+          <span class="hot-tease" id="tease-spar">Step in. Trade. Build. Atlas answers.</span>
+        </button>
+
+        <button type="button" class="hotspot lockers-hot" data-station="record" aria-describedby="tease-record">
+          <span class="object lockers" aria-hidden="true">
+            <span class="locker l1"></span>
+            <span class="locker l2"></span>
+            <span class="locker l3"></span>
+          </span>
+          <span class="hot-label">Training Record</span>
+          <span class="hot-tease" id="tease-record">XP, rank, scars, and the work you finished.</span>
+        </button>
+
+        <button type="button" class="hotspot coach-hot" data-station="coach" aria-describedby="tease-coach">
+          <span class="object coach-corner" aria-hidden="true">
+            <span class="stool"></span>
+            <span class="water-bucket"></span>
+            <span class="hanging-lantern"></span>
+            <span class="towel"></span>
+          </span>
+          <span class="hot-label">Coach Corner</span>
+          <span class="hot-tease" id="tease-coach">Atlas is here. Advice, reviews, custom drills.</span>
+        </button>
+
+        <button type="button" class="hotspot settings-hot" data-station="settings" aria-describedby="tease-settings">
+          <span class="object settings-box" aria-hidden="true">
+            <span class="switchboard"></span>
+            <span class="knob k1"></span>
+            <span class="knob k2"></span>
+            <span class="dial"></span>
+          </span>
+          <span class="hot-label">Settings</span>
+          <span class="hot-tease" id="tease-settings">Key, difficulty, voice, mute, reset.</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="station" class="station" hidden aria-hidden="true">
+      <div class="station-inner">
+        <header class="station-head">
+          <p class="station-kicker" id="station-kicker">Station</p>
+          <h2 id="station-title" tabindex="-1">Title</h2>
+          <p class="station-lead" id="station-lead"></p>
+        </header>
+        <div id="station-body" class="station-body"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer id="legal" class="legal" hidden>
+    Unofficial fan-made Catan trainer. Not affiliated with Catan.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
