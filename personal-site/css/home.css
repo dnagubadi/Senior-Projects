@@ -2,6 +2,24 @@
    Personal site homepage. Reads every value from tokens.css.
    ========================================================================== */
 
+/* ---- Fonts ---- */
+/* Celtica (SIL OFL 1.1, see fonts/OFL.txt), subset to Latin-1 and converted to WOFF2, ~18 KB each. */
+@font-face {
+  font-family: "Celtica";
+  src: url("../fonts/celtica-book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Celtica";
+  src: url("../fonts/celtica-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---- Base ---- */
 *,
 *::before,
@@ -21,8 +39,9 @@ body {
 
 h1, h2, h3 {
   margin: 0;
+  font-family: var(--font-display);
   line-height: var(--leading-tight);
-  font-weight: var(--weight-semibold);
+  font-weight: 700;
 }
 
 p { margin: 0; }
@@ -230,7 +249,7 @@ main:focus { outline: none; }
 .hero__name {
   font-family: var(--font-display);
   font-size: var(--text-hero);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1;
   overflow-wrap: anywhere;
