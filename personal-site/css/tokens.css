@@ -1,70 +1,67 @@
 /* ==========================================================================
    Personal site design tokens
-   Palette: Irish greens. All other CSS files read from these variables.
+   Palette: Atlantic edge (peat, moss, heather, lichen, parchment, mist, stone).
    Contrast ratios (WCAG 2.2) are noted next to each text/background pair.
    ========================================================================== */
 
 :root {
   /* ---- Raw palette (don't use directly in components) ---- */
-  --green-50: #f4f3ef;   /* tint of #dad7cd, raised cards */
-  --green-100: #eceae4;  /* tint of #dad7cd, soft panels */
-  --green-200: #dad7cd;  /* page background */
-  --green-300: #a3b18a;  /* sage: decorative fills, borders */
-  --green-500: #588157;  /* fern: accents, large text only */
-  --green-700: #3a5a40;  /* hunter: buttons, links */
-  --green-900: #344e41;  /* brunswick: body text, footer */
-  --white: #ffffff;
+  --peat: #132019;       /* deep peat, near-black */
+  --moss: #315b3a;       /* moss green */
+  --heather: #66706a;    /* heather, muted slate */
+  --lichen: #a7b68a;     /* lichen */
+  --parchment: #f4f0e6;  /* parchment */
+  --mist: #fcfbf7;       /* mist white */
+  --stone: #bca58d;      /* warm stone accent */
 
   /* ---- Semantic colors ---- */
-  --color-bg: var(--green-200);
-  --color-surface: var(--green-50);          /* cards */
-  --color-surface-alt: var(--green-100);     /* alternating sections */
-  --color-surface-inverse: var(--green-900); /* footer, feature band */
+  --color-bg: var(--mist);
+  --color-surface: var(--parchment);         /* the "note" band, cards on mist */
+  --color-surface-inverse: var(--peat);      /* hero fallback, footer */
 
-  --color-text: var(--green-900);            /* 6.31:1 on bg, 8.18:1 on surface */
-  --color-text-muted: var(--green-700);      /* 5.37:1 on bg, 6.96:1 on surface */
-  --color-text-inverse: var(--green-200);    /* 6.31:1 on surface-inverse */
+  --color-text: var(--peat);                 /* 16.25:1 on mist, 14.78:1 on parchment */
+  --color-text-muted: var(--heather);        /* 4.96:1 on mist, 4.51:1 on parchment */
+  --color-text-inverse: var(--mist);         /* 16.25:1 on peat */
+  --color-text-inverse-muted: var(--lichen); /* 7.77:1 on peat */
 
-  --color-link: var(--green-700);            /* 5.37:1 on bg; always underlined */
-  --color-link-hover: var(--green-900);
-  --color-link-inverse: var(--green-50);     /* on surface-inverse */
+  --color-link: var(--moss);                 /* 7.54:1 on mist, 6.86:1 on parchment; always underlined */
+  --color-link-hover: var(--peat);
+  --color-link-inverse: var(--mist);
 
-  --color-primary: var(--green-700);         /* button background */
-  --color-primary-hover: var(--green-900);
-  --color-on-primary: var(--white);          /* 7.73:1 on primary, 9.08:1 on hover */
+  --color-primary: var(--moss);              /* button background */
+  --color-primary-hover: var(--peat);
+  --color-on-primary: var(--mist);           /* 7.54:1 on moss */
 
-  --color-accent: var(--green-500);          /* 3.11:1 on bg: icons, borders, 24px+ text only */
-  --color-decor: var(--green-300);           /* 3.98:1 with text-900: fills and borders only, no small text on it */
+  --color-accent: var(--stone);              /* 7.13:1 on peat; on light surfaces decorative only (2.28:1) */
+  --color-border: var(--lichen);             /* thin dividers, decorative */
+  --color-border-strong: var(--moss);        /* card edges that must be seen: 7.54:1 */
 
-  --color-border: var(--green-300);
-  --color-border-strong: var(--green-500);   /* input borders: 3:1+ non-text contrast */
+  --color-focus: var(--moss);                /* focus ring on light surfaces */
+  --color-focus-inverse: var(--lichen);      /* focus ring on peat / over the hero */
 
-  --color-focus: var(--green-900);           /* focus ring on light surfaces */
-  --color-focus-inverse: var(--green-50);    /* focus ring on surface-inverse */
-
-  /* Status colors for forms/notices. Always paired with an icon or text label. */
-  --color-error: #8a1c1c;                    /* 8.36:1 on surface, 6.44:1 on bg */
-  --color-success: var(--green-700);
+  --color-error: #8a1c1c;                    /* 8.9:1 on mist */
 
   /* ---- Typography ---- */
+  --font-display: "Cormorant SC", "Cormorant Garamond", Georgia, serif;  /* hero name only */
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Fluid scale: 320px to 1280px viewport */
+  --text-xs: clamp(0.75rem, 0.73rem + 0.1vw, 0.8125rem);
   --text-sm: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
-  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-base: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-lg: clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);
   --text-xl: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
   --text-2xl: clamp(1.75rem, 1.5rem + 1.1vw, 2.5rem);
-  --text-3xl: clamp(2.125rem, 1.75rem + 1.9vw, 3.5rem);
+  --text-hero: clamp(2.75rem, 1.9rem + 4.2vw, 5.5rem);
 
   --weight-regular: 400;
-  --weight-medium: 500;
-  --weight-bold: 700;
+  --weight-semibold: 600;
 
-  --leading-tight: 1.2;
-  --leading-normal: 1.6;
-  --measure: 65ch;                           /* max line length for prose */
+  --leading-tight: 1.15;
+  --leading-normal: 1.7;
+  --tracking-label: 0.14em;
+  --measure: 62ch;
 
   /* ---- Spacing (4px base) ---- */
   --space-1: 0.25rem;
@@ -76,21 +73,17 @@
   --space-7: 3rem;
   --space-8: 4rem;
   --space-9: 6rem;
+  --space-10: 8rem;
 
   /* ---- Layout ---- */
   --container-max: 72rem;
-  --container-pad: clamp(1rem, 4vw, 2rem);
-  --header-height: 4rem;
+  --container-pad: clamp(1rem, 4vw, 2.5rem);
   --tap-target: 2.75rem;                     /* 44px minimum touch target */
 
-  /* ---- Shape and depth ---- */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1.25rem;
-  --radius-pill: 999px;
+  /* ---- Shape ---- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
   --border-width: 1px;
-  --shadow-sm: 0 1px 2px rgb(52 78 65 / 0.12);
-  --shadow-md: 0 4px 16px rgb(52 78 65 / 0.14);
 
   /* ---- Focus ---- */
   --focus-width: 3px;
@@ -98,18 +91,18 @@
 
   /* ---- Motion ---- */
   --duration-fast: 150ms;
-  --duration-base: 250ms;
+  --duration-drift: 90s;                     /* hero mist; slow enough to read as weather */
   --ease: cubic-bezier(0.2, 0, 0, 1);
 
   /* ---- Stacking ---- */
-  --z-header: 100;
+  --z-hero-media: 0;
+  --z-hero-overlay: 1;
+  --z-hero-content: 2;
   --z-skip-link: 200;
 }
 
-/* Turn off transitions and animations for users who ask for less motion. */
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-fast: 0ms;
-    --duration-base: 0ms;
   }
 }
