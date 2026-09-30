@@ -29,6 +29,8 @@ p { margin: 0; }
 
 img { display: block; max-width: 100%; }
 
+[hidden] { display: none !important; }
+
 a { color: var(--color-link); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
 a:hover { color: var(--color-link-hover); text-decoration-thickness: 2px; }
 
