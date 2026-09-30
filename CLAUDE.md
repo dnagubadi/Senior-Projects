@@ -30,7 +30,7 @@ Each site is standalone with its own `css/` and `js/`. Colors, fonts and spacing
 
 **Personal site**: editorial, misty Irish landscape, not touristy.
 - Palette: peat `#132019`, moss `#315B3A`, heather `#66706A`, lichen `#A7B68A`, parchment `#F4F0E6`, mist `#FCFBF7`, stone `#BCA58D`.
-- Fonts: headings in Celtica (self-hosted, OFL), body in Source Serif 4. The current `tokens.css` still uses Cormorant SC for the hero name; Celtica is the intended heading font.
+- Fonts: body and headings in Source Serif 4; hero name in Cormorant SC (see `css/tokens.css`). Celtica for headings was tried and not adopted.
 
 **Guitar site**: warm wood, realistic static wood-texture background (CC0 wood-plank photo), serif font.
 - Palette: `#562a0e` `#78380c` `#c8691c` `#d09259` `#e4ceaf`.
