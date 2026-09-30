@@ -3,29 +3,222 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home · Declan</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Declan · Personal work</title>
+    <meta name="description" content="Selected work, journal notes, and a short introduction from Declan." />
+    <meta name="theme-color" content="#132019" />
+
+    <!-- Hero image: the only eagerly loaded visual asset. Preload the AVIF so it starts before CSS. -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      imagesrcset="images/ireland-hero-960.avif 960w, images/ireland-hero-1920.avif 1920w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+
+    <!-- Two families, three files: Cormorant SC for the hero name only, Source Serif 4 for reading. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
+    />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/home.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
     <header class="site-header">
-      <a class="logo" href="index.html">Declan</a>
-      <nav>
-        <a href="about.html">About</a>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
-        <a href="../guitar-site/" target="_blank" rel="noopener noreferrer">Guitar site</a>
-      </nav>
+      <div class="container site-header__inner">
+        <a class="wordmark" href="index.html" aria-label="Declan, home">Declan</a>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#journal">Journal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li>
+              <a href="../guitar-site/" target="_blank" rel="noopener noreferrer">
+                Guitar<span class="visually-hidden"> site (opens in a new tab)</span><span aria-hidden="true"> ↗</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <main class="wrap">
-      <h1>Declan</h1>
-      <p class="lede">Guitar teacher, builder, and senior. Pick a side of the site below.</p>
-      <ul class="cards">
-        <li><a href="about.html">About me</a></li>
-        <li><a href="resume.html">Resume / CV</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="../guitar-site/" target="_blank" rel="noopener noreferrer">Guitar site</a></li>
-      </ul>
+
+    <main id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <!--
+          HERO IMAGE: replace these files in personal-site/images/ with a real Irish landscape
+          (coastal grassland, cliffs, hills). Export AVIF and WebP at 960px and 1920px wide.
+          Keep the 960px mobile rendition under ~250 KB (aim for 120-180 KB AVIF).
+          The image is decorative (alt=""): all meaning is in the text. If it fails to load,
+          the section falls back to the peat background colour and stays fully readable.
+        -->
+        <picture class="hero__media">
+          <source
+            type="image/avif"
+            srcset="images/ireland-hero-960.avif 960w, images/ireland-hero-1920.avif 1920w"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            srcset="images/ireland-hero-960.webp 960w, images/ireland-hero-1920.webp 1920w"
+            sizes="100vw"
+          />
+          <img
+            src="images/ireland-hero-1920.webp"
+            alt=""
+            width="1920"
+            height="1280"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            onerror="this.hidden = true"
+          />
+        </picture>
+        <div class="hero__mist" aria-hidden="true"></div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+
+        <div class="container hero__content">
+          <p class="eyebrow">Personal work · Ireland</p>
+          <h1 id="hero-title" class="hero__name">Declan</h1>
+          <p class="hero__statement">
+            A quiet collection of work, notes, and observations shaped by the Atlantic edge.
+          </p>
+          <div class="hero__actions">
+            <a class="button" href="#work">Explore selected work</a>
+            <a class="text-link text-link--inverse" href="#journal">Read the journal</a>
+          </div>
+        </div>
+
+        <a class="scroll-cue" href="#work">
+          <span>Scroll to wander</span>
+          <!-- Lucide ArrowDown (ISC licence), inlined so no icon package is needed. -->
+          <svg
+            class="icon"
+            aria-hidden="true"
+            focusable="false"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14" />
+            <path d="m19 12-7 7-7-7" />
+          </svg>
+        </a>
+      </section>
+
+      <section id="work" class="section" aria-labelledby="work-title">
+        <div class="container">
+          <header class="section__header">
+            <p class="label">01</p>
+            <h2 id="work-title">Selected work</h2>
+          </header>
+          <ul class="work-list" role="list">
+            <li class="work-card">
+              <p class="meta">Live audio · Colour</p>
+              <h3><a class="card-link" href="../chroma-field/">Chroma Field</a></h3>
+              <p>Turns live sound from the microphone into a moving field of colour, with nothing recorded or sent anywhere.</p>
+              <span class="card-cue" aria-hidden="true">View project →</span>
+            </li>
+            <li class="work-card">
+              <p class="meta">Strategy · Coaching</p>
+              <h3><a class="card-link" href="../catan-dojo/">Catan Dojo</a></h3>
+              <p>A training dojo for Catan: count the odds and build positions that survive bad rolls, keyboard or voice.</p>
+              <span class="card-cue" aria-hidden="true">View project →</span>
+            </li>
+            <li class="work-card">
+              <p class="meta">Conversation · Voice</p>
+              <h3><a class="card-link" href="../no-man/">No-Man</a></h3>
+              <p>An anti yes-man. Talk or type, and it argues back, every time.</p>
+              <span class="card-cue" aria-hidden="true">View project →</span>
+            </li>
+          </ul>
+          <p class="section__more"><a class="text-link" href="projects.html">See all projects</a></p>
+        </div>
+      </section>
+
+      <section id="journal" class="section section--ruled" aria-labelledby="journal-title">
+        <div class="container">
+          <header class="section__header">
+            <p class="label">02</p>
+            <h2 id="journal-title">From the journal</h2>
+          </header>
+          <!-- PLACEHOLDER entries: swap titles, dates and hrefs once real journal pages exist. -->
+          <ul class="journal-list" role="list">
+            <li class="journal-entry">
+              <p class="meta">
+                <time datetime="2026-09-12">12 September 2026</time>
+                <span aria-hidden="true"> · </span>Music
+              </p>
+              <h3><a class="card-link" href="journal/slow-practice.html">Slow practice, and what it taught me about teaching</a></h3>
+              <p>Notes from a term of lessons where the metronome came down and the progress went up.</p>
+            </li>
+            <li class="journal-entry">
+              <p class="meta">
+                <time datetime="2026-08-28">28 August 2026</time>
+                <span aria-hidden="true"> · </span>Field notes
+              </p>
+              <h3><a class="card-link" href="journal/weather-on-the-headland.html">Weather on the headland</a></h3>
+              <p>A short walk, a change in the light, and why I keep a notebook in my coat pocket.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section note" aria-labelledby="note-title">
+        <div class="container note__inner">
+          <p class="label">03</p>
+          <h2 id="note-title">A note</h2>
+          <p class="note__body">
+            I teach guitar, build small things for the web, and write things down so I don't forget them.
+            This site is where that work collects: finished projects, half-finished ideas, and the notes in between.
+            It is meant to be read slowly.
+          </p>
+          <p><a class="text-link" href="about.html">More about me</a></p>
+        </div>
+      </section>
     </main>
-    <script src="js/main.js" defer></script>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div>
+          <p class="site-footer__name">Declan</p>
+          <!-- PLACEHOLDERS: replace location and email. -->
+          <p>[Your town], Ireland</p>
+          <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+        </div>
+        <nav aria-label="Social">
+          <ul class="footer-links" role="list">
+            <li>
+              <a href="https://github.com/dnagubadi" target="_blank" rel="noopener noreferrer">
+                GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                Instagram<span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <a href="../guitar-site/" target="_blank" rel="noopener noreferrer">
+                Guitar lessons<span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
   </body>
 </html>
