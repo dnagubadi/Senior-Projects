@@ -3,144 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Chroma Field turns live microphone audio into color. Audio stays in your browser and is used only for visualization."
-    />
-    <title>Chroma Field — Live Audio Color</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>Senior Projects · Declan</title>
+    <style>
+      :root { --bg: #fbfaf7; --text: #1d1c1a; --muted: #6b6760; --border: #e6e2da; --card: #fff; --accent: #b5542d; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #161514; --text: #f1eee8; --muted: #a39e95; --border: #34322e; --card: #1f1e1c; --accent: #e0835b; }
+      }
+      body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+      main { max-width: 44rem; margin: 0 auto; padding: 3rem 1rem; }
+      p { color: var(--muted); }
+      ul { list-style: none; padding: 0; display: grid; gap: 0.75rem; }
+      a { display: block; padding: 1rem 1.25rem; background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; color: var(--accent); text-decoration: none; font-weight: 600; }
+    </style>
   </head>
   <body>
-    <div class="ambient" aria-hidden="true"></div>
-
-    <header class="topbar">
-      <div class="brand">
-        <p class="eyebrow">Senior Projects · Atlas</p>
-        <h1>Chroma Field</h1>
-        <p class="lede">
-          A microphone-driven visualizer that maps live sound to RGB and hex.
-          Waveform is secondary; color is the signal.
-        </p>
-      </div>
-      <p class="privacy">
-        Microphone audio never leaves this browser tab. It is analyzed locally
-        for visualization only and is not recorded, uploaded, or played back
-        through your speakers.
-      </p>
-    </header>
-
-    <main class="layout">
-      <section class="stage glass" aria-labelledby="live-color-heading">
-        <div class="stage-copy">
-          <h2 id="live-color-heading" class="visually-hidden">Live color</h2>
-          <p class="status" id="status" role="status">Microphone is off. Click Enable Microphone to begin.</p>
-        </div>
-
-        <div
-          class="color-field"
-          id="colorField"
-          role="img"
-          aria-label="Live color field, currently idle"
-        >
-          <div class="color-core" id="colorCore"></div>
-          <div class="readout">
-            <p class="hex" id="hexValue">#E2E4EC</p>
-            <p class="rgb" id="rgbValue">rgb(226, 228, 236)</p>
-          </div>
-        </div>
-
-        <div class="channels" aria-label="RGB channel values">
-          <div class="channel">
-            <span class="channel-label">R</span>
-            <span class="channel-value" id="rValue">226</span>
-          </div>
-          <div class="channel">
-            <span class="channel-label">G</span>
-            <span class="channel-value" id="gValue">228</span>
-          </div>
-          <div class="channel">
-            <span class="channel-label">B</span>
-            <span class="channel-value" id="bValue">236</span>
-          </div>
-        </div>
-      </section>
-
-      <aside class="side">
-        <section class="glass panel" aria-labelledby="meters-heading">
-          <h2 id="meters-heading">Signal</h2>
-          <div class="meter">
-            <div class="meter-label">
-              <span>Intensity</span>
-              <span id="loudnessValue">0%</span>
-            </div>
-            <div class="meter-track" aria-hidden="true">
-              <div class="meter-fill intensity" id="loudnessFill"></div>
-            </div>
-          </div>
-          <div class="meter">
-            <div class="meter-label">
-              <span>Bass → red</span>
-              <span id="bassValue">0%</span>
-            </div>
-            <div class="meter-track" aria-hidden="true">
-              <div class="meter-fill bass" id="bassFill"></div>
-            </div>
-          </div>
-          <div class="meter">
-            <div class="meter-label">
-              <span>Mids → green</span>
-              <span id="midValue">0%</span>
-            </div>
-            <div class="meter-track" aria-hidden="true">
-              <div class="meter-fill mid" id="midFill"></div>
-            </div>
-          </div>
-          <div class="meter">
-            <div class="meter-label">
-              <span>Treble → blue</span>
-              <span id="trebleValue">0%</span>
-            </div>
-            <div class="meter-track" aria-hidden="true">
-              <div class="meter-fill treble" id="trebleFill"></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="glass panel controls" aria-labelledby="controls-heading">
-          <h2 id="controls-heading">Controls</h2>
-          <div class="button-row">
-            <button type="button" class="btn primary" id="enableBtn">
-              Enable Microphone
-            </button>
-            <button type="button" class="btn" id="pauseBtn" disabled>
-              Pause visualization
-            </button>
-            <button type="button" class="btn danger" id="stopBtn" disabled>
-              Stop microphone
-            </button>
-            <button type="button" class="btn" id="copyBtn">Copy Hex</button>
-          </div>
-        </section>
-      </aside>
-
-      <section class="wave-panel glass" aria-labelledby="wave-heading">
-        <div class="wave-header">
-          <h2 id="wave-heading">Waveform</h2>
-          <p>Time-domain amplitude · secondary view</p>
-        </div>
-        <canvas id="waveCanvas" aria-label="Live audio waveform"></canvas>
-      </section>
-
-      <section class="palette-panel glass" aria-labelledby="palette-heading">
-        <h2 id="palette-heading">Recent colors</h2>
-        <p class="palette-hint">
-          Distinct live colors land here. Click a swatch to copy it. While
-          paused, the click also pins that color on the field.
-        </p>
-        <ul class="palette" id="palette"></ul>
-      </section>
+    <main>
+      <h1>Senior Projects</h1>
+      <p>Everything I built senior year, in one place.</p>
+      <ul>
+        <li><a href="./website/">Personal website &amp; guitar lessons</a></li>
+        <li><a href="./spark/">Spark</a></li>
+        <li><a href="./chroma-field/">Chroma Field</a></li>
+        <li><a href="./no-man/">No-Man</a></li>
+        <li><a href="./catan-dojo/">Catan Dojo</a></li>
+      </ul>
     </main>
-
-    <script src="./script.js" defer></script>
   </body>
 </html>
