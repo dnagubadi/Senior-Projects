@@ -1,0 +1,67 @@
+/* Temporary styles for the guitar site; replaced by its own token files in the guitar build. */
+:root {
+  --bg: #fbfaf7;
+  --text: #1d1c1a;
+  --muted: #6b6760;
+  --accent: #b5542d;
+  --card: #ffffff;
+  --border: #e6e2da;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161514;
+    --text: #f1eee8;
+    --muted: #a39e95;
+    --accent: #e0835b;
+    --card: #1f1e1c;
+    --border: #34322e;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); }
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header nav { display: flex; gap: 1.25rem; }
+.site-header a { text-decoration: none; color: var(--text); }
+.logo { font-weight: 700; }
+
+.wrap { max-width: 48rem; margin: 0 auto; padding: 2.5rem 1rem; }
+.lede { color: var(--muted); font-size: 1.15rem; }
+
+.cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+}
+
+.cards a {
+  display: block;
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 600;
+}
