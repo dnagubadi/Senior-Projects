@@ -1,11 +1,14 @@
 # The problem
 
-- Most exhibits are built around one fixed topic.
-- Learning usually starts with facts, not curiosity.
-- Visitors look and read, but rarely get to make anything.
-- They leave without a next step.
+People are sometimes afraid of, or put off by, pursuing something they're passionate about.
 
-> **The big question:** what if one tool could become anything you're curious about, let you create inside it, and help you keep exploring afterward?
+- Starting something new can feel risky, like you might fail or look silly.
+- It's hard to know where to begin.
+- So the curiosity fades before it turns into anything.
+
+[[Add the moment or story that made you notice this problem.]]
+
+> **The big question:** what if trying something you're curious about felt like play, with nothing to lose, and gave you a reason to keep going?
 
 # Making a Spark takes five steps
 

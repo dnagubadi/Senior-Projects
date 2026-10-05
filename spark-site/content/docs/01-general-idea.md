@@ -1,8 +1,8 @@
 **Find your Spark.** Spark is a creation tool that turns anything you're curious about into your own journey. It has two halves: a **digital interface** where AI builds and edits your Spark, and a **physical prototype**, the Sparkplug controller, that lets you explore it with your hands.
 
-Most of us learn the facts about a subject before we ever get curious about it. Spark flips that around and starts with curiosity. You name anything you wonder about, AI turns it into a world, and then you make it your own. You leave with your own Spark, and a reason to keep going.
+Lots of people are curious about something but feel afraid of, or put off by, actually pursuing it. Spark makes the first step small and playful. You name anything you wonder about, AI turns it into a world, and then you make it your own. You leave with your own Spark, and a reason to keep going.
 
-> **Why it matters:** people find their passions through curiosity and play, but most exhibits and classes offer one fixed topic and start with facts.
+> **Why it matters:** people find their passions through curiosity and play, but fear of being bad at something, or not knowing where to start, stops many of them before they begin.
 
 # From museum visit to creation tool
 
