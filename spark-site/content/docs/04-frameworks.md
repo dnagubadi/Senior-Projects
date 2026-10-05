@@ -1,4 +1,4 @@
-Spark is one installation that has to work for any subject. Three parts of the framework make that possible.
+Spark is one tool that has to work for any subject. Three parts of the framework make that possible.
 
 # Journeys
 
@@ -8,7 +8,7 @@ A journey is a game template that the AI fills in for whatever subject you pick.
 
 # The Spark format
 
-Every Spark is saved in the same format, so it can be played on the installation, opened from a take-home card, edited in Spark Studio and shared to the library. Designing this format is one of the first next steps.
+Every Spark is saved in the same format, so it can be played with the Sparkplug, edited in Spark Studio, opened again later and shared to the library. Designing this format is one of the first next steps.
 
 [[List what a Spark file holds, for example the subject, the journey, the world, and the control labels.]]
 

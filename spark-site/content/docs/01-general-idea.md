@@ -1,17 +1,30 @@
-Most of us learn the facts about a subject before we ever get curious about it. Spark flips that around and starts with curiosity. You name anything you wonder about, and AI turns it into a world you explore with your hands. You leave with your own Spark, and a reason to keep going.
+**Find your Spark.** Spark is a creation tool that turns anything you're curious about into your own journey. It has two halves: a **digital interface** where AI builds and edits your Spark, and a **physical prototype**, the Sparkplug controller, that lets you explore it with your hands.
+
+Most of us learn the facts about a subject before we ever get curious about it. Spark flips that around and starts with curiosity. You name anything you wonder about, AI turns it into a world, and then you make it your own. You leave with your own Spark, and a reason to keep going.
 
 > **Why it matters:** people find their passions through curiosity and play, but most exhibits and classes offer one fixed topic and start with facts.
 
+# From museum visit to creation tool
+
+Spark started as an idea for a museum installation. It's now a tool for making things, not just visiting them. Museums are still the best comparison, because they're where most people meet a new subject hands-on.
+
+| | A museum exhibit | Spark |
+| --- | --- | --- |
+| **Topic** | One fixed topic, chosen for you | Anything you're curious about |
+| **Starts with** | Facts on a wall | Your own question |
+| **What you do** | Look, read, sometimes press a button | Explore, change and create with real controls |
+| **Who makes it** | The museum | You, with AI's help |
+| **After you leave** | Usually nothing | Your Spark is saved, and you can keep building it |
+
 # Who it's for
 
-Spark is for curious kids, teens and families. Kids are the baseline: if a kid can walk up and use it without help, everyone can.
+Spark is for curious kids, teens and families. Kids are the baseline: if a kid can pick it up and use it without help, everyone can.
 
 # The pieces
 
-- **The installation:** a screen, a room that lights up, and a physical controller called the Sparkplug.
-- **Your Spark:** a world the AI builds around the subject you picked, using one of a few game templates called journeys.
-- **The web platform:** where you play, save, edit and build Sparks after your visit, plus a library of everyone's shared Sparks.
-- **A take-home card** that opens your Spark online.
+- **The digital interface:** where you name a subject, play your Spark, save it to My Sparks, edit it in Spark Studio, build one from scratch, and share it to the library.
+- **The physical prototype:** the Sparkplug, a controller with a joystick, knobs and buttons that relabel themselves for every Spark.
+- **Your Spark:** a world the AI builds around your subject, using one of a few game templates called journeys.
 
 # Who's making it
 

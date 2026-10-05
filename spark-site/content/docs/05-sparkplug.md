@@ -1,6 +1,6 @@
-The Sparkplug is the physical controller you use to explore your Spark. It has a **joystick, 3 knobs, 4 buttons and a big Ignite button**.
+The Sparkplug is Spark's physical prototype: the controller you use to explore and create inside your Spark. It has a **joystick, 3 knobs, 4 buttons and a big Ignite button**.
 
-When a new Spark loads, the AI relabels every control, so one installation works for any subject.
+When a new Spark loads, the AI relabels every control, so one controller works for any subject.
 
 # Same controls, different Sparks
 
