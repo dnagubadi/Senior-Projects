@@ -29,6 +29,11 @@ Maya says "volcanoes." Her Volcano Spark forms on screen. She turns a knob to he
 6. **Save it?** Saved Sparks go to **My Sparks**.
 7. From My Sparks you can share it to the library, edit it in **Spark Studio**, or build one from scratch.
 
-# Where Spark could live
+# Where Spark lives
 
-Spark is built as a creation tool first. The same interface and controller could still be set up in a museum, library or classroom, where a visitor would walk up, make a Spark, and take it home. [[Say whether you still want to show a museum-style setup at the spring expo.]]
+Spark works the same way wherever it's set up. The workflow above doesn't change, only the setting does.
+
+- **At the spring expo:** a museum-style setup, with the Sparkplug and a screen set up as an exhibit people walk up to.
+- **At home, in a classroom or anywhere else:** the same controller and the same digital interface, and the same five steps.
+
+Wherever you make a Spark, it's saved to My Sparks, so you can pick it up again somewhere else.

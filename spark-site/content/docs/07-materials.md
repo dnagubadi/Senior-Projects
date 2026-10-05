@@ -5,7 +5,7 @@ Spark is delivered as two halves, a physical prototype and a digital interface, 
 | **1. Physical prototype** | The Sparkplug: joystick, knobs and buttons in a custom enclosure |
 | **2. Digital interface** | The Spark web platform: play, save, edit and build Sparks, plus a library |
 | **3. 4 to 5 journeys** | Game templates the AI fills in for any subject |
-| **4. Expo demo** | The controller and the interface set up together so people can make a Spark |
+| **4. Museum-style expo setup** | The controller and a screen set up as an exhibit people walk up to. It uses the same workflow as at home |
 
 # What the controller is made from
 
