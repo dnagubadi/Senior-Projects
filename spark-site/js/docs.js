@@ -3,6 +3,7 @@
 //
 // Edit section text in content/docs/*.md. Supported Markdown:
 //   # Heading (becomes a sub-heading inside the section), ## smaller heading
+//   (add data-heading-level="2" on a page with no section titles, so # becomes h2)
 //   paragraphs, - bullet lists, 1. numbered lists, > quotes, --- divider
 //   **bold**, *italic*, `code`, [link text](url), ![alt text](image.png)
 //   | tables | with | pipes |
@@ -41,7 +42,8 @@
     return line.trim().replace(/^\||\|$/g, "").split("|").map((cell) => cell.trim());
   }
 
-  function renderMarkdown(source) {
+  function renderMarkdown(source, topLevel) {
+    topLevel = topLevel || 3;
     const lines = source.replace(/\r\n?/g, "\n").split("\n");
     const html = [];
     let i = 0;
@@ -54,7 +56,7 @@
       // Headings: # -> h3, ## -> h4 (the section title is already the h2)
       const heading = line.match(/^(#{1,3})\s+(.*)$/);
       if (heading) {
-        const level = Math.min(heading[1].length + 2, 4);
+        const level = Math.min(heading[1].length + topLevel - 1, 4);
         html.push(`<h${level}>${inline(heading[2])}</h${level}>`);
         i++;
         continue;
@@ -92,7 +94,7 @@
           quote.push(lines[i].replace(/^\s*>\s?/, ""));
           i++;
         }
-        html.push(`<blockquote>${renderMarkdown(quote.join("\n"))}</blockquote>`);
+        html.push(`<blockquote>${renderMarkdown(quote.join("\n"), topLevel)}</blockquote>`);
         continue;
       }
 
@@ -148,7 +150,7 @@
         return response.text();
       })
       .then((text) => {
-        block.innerHTML = renderMarkdown(text);
+        block.innerHTML = renderMarkdown(text, Number(block.getAttribute("data-heading-level")) || 3);
       })
       .catch(() => {
         block.innerHTML =

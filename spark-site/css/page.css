@@ -1,0 +1,83 @@
+/* ==========================================================================
+   Linked docs pages (example journey, Sparkplug model).
+   ========================================================================== */
+
+.site-header .btn--ghost { padding-inline: var(--space-3); }
+
+.page-body {
+  max-width: 56rem;
+  padding-block: var(--space-6) var(--space-9);
+}
+
+.page-prose { max-width: none; }
+.page-prose h2 { margin-top: var(--space-7); font-size: var(--text-xl); }
+.page-prose > :first-child { margin-top: 0; }
+
+.page-actions { margin-top: var(--space-5); }
+
+/* ---- Model preview ---- */
+.model { margin-bottom: var(--space-7); }
+
+.model__stage {
+  position: relative;
+  aspect-ratio: 8 / 5;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 50% 120%, var(--sky), transparent 60%),
+    radial-gradient(circle at 50% -20%, var(--peach), transparent 60%),
+    var(--color-surface);
+  overflow: hidden;
+}
+
+.model__still,
+.model__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.model__canvas { cursor: grab; touch-action: none; }
+.model__canvas:active { cursor: grabbing; }
+.model__canvas:focus-visible { outline-offset: -4px; }
+
+.model__status {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-3);
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.model__status:empty { display: none; }
+
+.model__controls { margin-top: var(--space-4); }
+
+.model__hint {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.model__top {
+  margin: var(--space-6) 0 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-cool);
+}
+
+.model__top img {
+  width: 100%;
+  height: auto;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.model__top figcaption {
+  margin-top: var(--space-2);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

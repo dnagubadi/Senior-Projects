@@ -145,6 +145,31 @@
   color: var(--color-text-inverse);
 }
 
+/* Links to the extra pages, under the numbered list */
+.docs-toc__extra {
+  margin: 0 var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-3) 0;
+  border-top: 2px dashed var(--color-border);
+}
+
+.docs-toc__extra-title {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-muted);
+}
+
+.docs-toc__extra ul { margin: 0; padding: 0; list-style: none; }
+.docs-toc__extra li + li { margin-top: 0; }
+
+.docs-toc__extra a {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap-target);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+}
+
 /* ---- Content column ---- */
 .docs-content {
   flex: 1 1 auto;

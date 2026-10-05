@@ -105,6 +105,7 @@ code {
   padding: 0.1em 0.35em;
   border-radius: 0.3em;
   background: var(--color-surface-cool);
+  overflow-wrap: anywhere;   /* long file paths wrap instead of pushing the page sideways */
 }
 
 ::selection {
@@ -184,3 +185,5 @@ code {
   background: transparent;
   color: var(--orange-300);
 }
+
+[hidden] { display: none !important; }
