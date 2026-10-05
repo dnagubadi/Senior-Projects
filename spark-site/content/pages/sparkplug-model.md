@@ -15,5 +15,3 @@
 | 3 knobs | 7.5 mm | Potentiometers with a 6 mm shaft |
 | 4 buttons | 24 mm | 24 mm arcade buttons |
 | Ignite | 60 mm | A 60 mm dome arcade button |
-
-[[Add a photo of the first printed prototype here.]]

@@ -10,8 +10,6 @@ A journey is a game template that the AI fills in for whatever subject you pick.
 
 Every Spark is saved in the same format, so it can be played with the Sparkplug, edited in Spark Studio, opened again later and shared to the library. Designing this format is one of the first next steps.
 
-[[List what a Spark file holds, for example the subject, the journey, the world, and the control labels.]]
-
 # Controls that relabel themselves
 
 The Sparkplug always has the same physical controls, but the AI gives each one a new job when a new Spark loads. See the Sparkplug section for examples.
