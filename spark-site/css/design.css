@@ -1,0 +1,157 @@
+/* ==========================================================================
+   Design kit page: swatches, type specimens, demo panels.
+   ========================================================================== */
+
+.kit-hero {
+  padding-block: var(--space-7) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.kit-hero h1 { font-size: clamp(2.25rem, 1.8rem + 2.4vw, 3.75rem); }
+
+.kit-jump ul {
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+  gap: var(--space-1);
+}
+
+.kit-jump li + li { margin-top: 0; }
+
+.kit-section h3 { margin-top: var(--space-6); }
+
+/* ---- Swatches ---- */
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.swatches li + li { margin-top: 0; }
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1 1 9rem;
+  max-width: 14rem;
+  font-size: var(--text-sm);
+}
+
+.swatch__chip {
+  display: block;
+  height: 5rem;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.swatch__chip--light { box-shadow: inset 0 0 0 2px var(--color-border); }
+
+.swatch code { width: fit-content; }
+.swatch span:last-child { color: var(--color-text-muted); }
+
+/* ---- Type specimens ---- */
+.type-specimens {
+  margin-bottom: var(--space-6);
+  border-top: 2px solid var(--color-border);
+}
+
+.type-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-block: var(--space-5);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.type-row__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.type-row__sample { margin: 0; max-width: none; }
+
+@media (min-width: 48rem) {
+  .type-row { flex-direction: row; align-items: baseline; gap: var(--space-6); }
+  .type-row__label { flex: 0 0 10rem; }
+}
+
+/* ---- Demo panels ---- */
+.kit-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+  padding: var(--space-6);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.kit-demo > :last-child { margin-bottom: 0; }
+
+.kit-demo--inverse {
+  border-style: solid;
+  border-color: transparent;
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+}
+
+.kit-demo__title {
+  margin: 0 !important;
+  font-size: var(--text-base);
+}
+
+.kit-notes {
+  padding-left: 1.2em;
+}
+
+/* ---- Form demo ---- */
+.kit-form {
+  max-width: 36rem;
+  height: auto;
+  gap: 0;
+}
+
+.kit-form__actions { margin-top: var(--space-5); }
+
+/* ---- Spacing scale ---- */
+.space-scale {
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.space-scale li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.space-scale span {
+  display: block;
+  height: 1.25rem;
+  flex: none;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--orange-600), var(--blue-500));
+}
+
+.shape-demo { margin: 0; padding: 0; list-style: none; }
+
+.shape-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  height: 9rem;
+  padding: var(--space-5);
+  background: var(--color-surface);
+}
+
+.shape-tile code { width: fit-content; }

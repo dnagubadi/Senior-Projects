@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!-- Parked for later: not linked from the docs page. Open it directly at spark-site/design.html -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design kit · Spark</title>
+    <meta name="description" content="The Spark design system: colors, fonts, buttons, cards, tags, form controls and spacing." />
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/design.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ================= Header (same on every page) ================= -->
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="home.html" aria-label="Spark home">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M4 30a28 28 0 0 1 56 0z" fill="#ff6d00" />
+            <path d="M4 34a28 28 0 0 0 56 0z" fill="#0077b6" />
+            <path d="M32 22l2.6 7.4L42 32l-7.4 2.6L32 42l-2.6-7.4L22 32l7.4-2.6z" fill="#ffd166" stroke="#03045e" stroke-width="2.5" stroke-linejoin="round" />
+          </svg>
+          <span>Spark</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="./">Docs</a></li>
+            <li><a href="design.html" aria-current="page">Design kit</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <header class="kit-hero">
+        <div class="container">
+          <p class="eyebrow"><span class="hemi-dot" aria-hidden="true"></span> Design system</p>
+          <h1>The Spark design kit</h1>
+          <p class="lead">Every color, font and building block the Spark site uses, in one place. All values live in <code>css/tokens.css</code>.</p>
+          <nav class="kit-jump" aria-label="Design kit sections">
+            <ul class="cluster">
+              <li><a class="btn btn--ghost" href="#colors">Colors</a></li>
+              <li><a class="btn btn--ghost" href="#type">Type</a></li>
+              <li><a class="btn btn--ghost" href="#buttons">Buttons</a></li>
+              <li><a class="btn btn--ghost" href="#cards">Cards</a></li>
+              <li><a class="btn btn--ghost" href="#tags">Tags</a></li>
+              <li><a class="btn btn--ghost" href="#forms">Forms</a></li>
+              <li><a class="btn btn--ghost" href="#shape">Shape and space</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- ================= Colors ================= -->
+      <section class="section kit-section" id="colors" aria-labelledby="colors-title">
+        <div class="container">
+          <h2 id="colors-title">Colors</h2>
+          <p class="lead">The orange half and the blue half come straight from the Spark hemisphere. Cream, peach, sky and sun support them.</p>
+
+          <h3>Orange half</h3>
+          <ul class="swatches" role="list">
+            <li class="swatch"><span class="swatch__chip" style="background:#ff5400"></span><strong>Orange 700</strong><code>#ff5400</code><span>Decoration only</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#ff6d00"></span><strong>Orange 600</strong><code>#ff6d00</code><span>Primary button. Navy text 6.3:1</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#ff8500"></span><strong>Orange 500</strong><code>#ff8500</code><span>Navy text 7.3:1</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#ff9100"></span><strong>Orange 400</strong><code>#ff9100</code><span>Navy text 7.9:1</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#ff9e00"></span><strong>Orange 300</strong><code>#ff9e00</code><span>Hover, links on navy 8.6:1</span></li>
+          </ul>
+
+          <h3>Blue half</h3>
+          <ul class="swatches" role="list">
+            <li class="swatch"><span class="swatch__chip" style="background:#00b4d8"></span><strong>Blue 300</strong><code>#00b4d8</code><span>Decoration on light</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#0096c7"></span><strong>Blue 400</strong><code>#0096c7</code><span>Decoration on light</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#0077b6"></span><strong>Blue 500</strong><code>#0077b6</code><span>Focus ring 4.6:1</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#023e8a"></span><strong>Blue 600</strong><code>#023e8a</code><span>Links 9.7:1</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#03045e"></span><strong>Blue 700</strong><code>#03045e</code><span>Text 16.8:1</span></li>
+          </ul>
+
+          <h3>Supporting colors</h3>
+          <ul class="swatches" role="list">
+            <li class="swatch"><span class="swatch__chip swatch__chip--light" style="background:#fff8ef"></span><strong>Cream</strong><code>#fff8ef</code><span>Page background</span></li>
+            <li class="swatch"><span class="swatch__chip swatch__chip--light" style="background:#ffe8d6"></span><strong>Peach</strong><code>#ffe8d6</code><span>Warm surfaces</span></li>
+            <li class="swatch"><span class="swatch__chip swatch__chip--light" style="background:#e3f6fb"></span><strong>Sky</strong><code>#e3f6fb</code><span>Cool surfaces</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#ffd166"></span><strong>Sun</strong><code>#ffd166</code><span>The spark, highlights</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#a83800"></span><strong>Ember</strong><code>#a83800</code><span>Orange text 6.2:1</span></li>
+            <li class="swatch"><span class="swatch__chip" style="background:#4a5577"></span><strong>Slate</strong><code>#4a5577</code><span>Muted text 7.0:1</span></li>
+          </ul>
+
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#023e8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+            <div>
+              <p><strong>Contrast rule:</strong> bright orange and bright blue never carry text on light backgrounds. Text uses navy, ember, slate or blue 600. Contrast ratios are listed next to every pair in <code>tokens.css</code>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Type ================= -->
+      <section class="section section--warm kit-section" id="type" aria-labelledby="type-title">
+        <div class="container">
+          <h2 id="type-title">Type</h2>
+          <p class="lead">Bricolage Grotesque for headings and buttons: friendly, with a bit of personality. Atkinson Hyperlegible Next for reading: designed so every letter is easy to tell apart.</p>
+
+          <div class="type-specimens">
+            <div class="type-row"><span class="type-row__label">H1 · 40–72px</span><p class="type-row__sample" style="font-family:var(--font-display);font-size:var(--text-3xl);font-weight:800;letter-spacing:-0.035em;line-height:1.1">Two halves, one spark</p></div>
+            <div class="type-row"><span class="type-row__label">H2 · 30–44px</span><p class="type-row__sample" style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;letter-spacing:-0.02em;line-height:1.1">Every spark needs two sides</p></div>
+            <div class="type-row"><span class="type-row__label">H3 · 24–32px</span><p class="type-row__sample" style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;line-height:1.3">How Sparkplug works</p></div>
+            <div class="type-row"><span class="type-row__label">Lead · 20–24px</span><p class="type-row__sample lead">A bigger paragraph that introduces a section in one or two sentences.</p></div>
+            <div class="type-row"><span class="type-row__label">Body · 18–20px</span><p class="type-row__sample">Body text is at least 18px so it's comfortable for young readers. Lines stay under about 65 characters wide, so eyes don't get lost.</p></div>
+            <div class="type-row"><span class="type-row__label">Small · 15–16px</span><p class="type-row__sample" style="font-size:var(--text-sm)">Captions, hints and tags. Never smaller than this.</p></div>
+          </div>
+
+          <h3>Links</h3>
+          <p>Links are <a href="#type">always underlined</a>, so you can spot them without relying on color. They get a thicker line on hover.</p>
+        </div>
+      </section>
+
+      <!-- ================= Buttons ================= -->
+      <section class="section kit-section" id="buttons" aria-labelledby="buttons-title">
+        <div class="container">
+          <h2 id="buttons-title">Buttons</h2>
+          <p class="lead">Buttons are pill shaped and at least 48px tall, so they're easy to tap. Each kind looks different even without color: filled, outlined or underlined.</p>
+
+          <div class="kit-demo">
+            <h3 class="kit-demo__title">On light</h3>
+            <div class="cluster">
+              <button class="btn btn--primary" type="button">Primary</button>
+              <button class="btn btn--secondary" type="button">Secondary</button>
+              <button class="btn btn--ghost" type="button">Text button</button>
+            </div>
+            <div class="cluster">
+              <button class="btn btn--primary" type="button" disabled>Primary disabled</button>
+              <button class="btn btn--secondary" type="button" disabled>Secondary disabled</button>
+              <button class="btn btn--ghost" type="button" disabled>Text disabled</button>
+            </div>
+            <div class="cluster">
+              <button class="btn btn--primary btn--lg" type="button">
+                Large with icon
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </button>
+              <button class="btn btn--secondary btn--lg" type="button">Large secondary</button>
+            </div>
+          </div>
+
+          <div class="kit-demo kit-demo--inverse on-inverse">
+            <h3 class="kit-demo__title">On navy</h3>
+            <div class="cluster">
+              <button class="btn btn--primary" type="button">Primary</button>
+              <button class="btn btn--secondary" type="button">Secondary</button>
+              <button class="btn btn--ghost" type="button">Text button</button>
+            </div>
+          </div>
+
+          <ul class="kit-notes">
+            <li><strong>Hover:</strong> lifts up 2px. Primary gets lighter.</li>
+            <li><strong>Pressed:</strong> pushes down onto its navy edge.</li>
+            <li><strong>Keyboard focus:</strong> thick blue ring outside the button.</li>
+            <li><strong>Disabled:</strong> grey fill, dashed edge and a "not allowed" cursor.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================= Cards ================= -->
+      <section class="section section--cool kit-section" id="cards" aria-labelledby="cards-title">
+        <div class="container">
+          <h2 id="cards-title">Cards</h2>
+          <p class="lead">Cards group related things. A link card is clickable everywhere and lifts on hover.</p>
+
+          <ul class="row row--3 kit-cards" role="list">
+            <li>
+              <article class="card">
+                <span class="card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#023e8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3" /><path d="M3 10h18" /></svg>
+                </span>
+                <h3>Basic card</h3>
+                <p>White surface, soft shadow, rounded corners. Good for most content.</p>
+              </article>
+            </li>
+            <li>
+              <article class="card card--link">
+                <span class="card__icon card__icon--warm" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#a83800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" /></svg>
+                </span>
+                <h3><a href="./">Link card</a></h3>
+                <p>The whole card is one link. Hover or tab to it to see it lift.</p>
+                <p class="card__footer card__arrow">
+                  Open docs
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </p>
+              </article>
+            </li>
+            <li>
+              <article class="card card--warm">
+                <p class="cluster"><span class="tag tag--warm">Warm</span></p>
+                <h3>Tinted card</h3>
+                <p>Peach or sky backgrounds for callouts and the two halves of the hemisphere.</p>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================= Tags ================= -->
+      <section class="section kit-section" id="tags" aria-labelledby="tags-title">
+        <div class="container">
+          <h2 id="tags-title">Tags and badges</h2>
+          <p class="lead">Tags always have a word, and status tags add an icon too, so meaning never depends on color alone.</p>
+
+          <div class="kit-demo">
+            <div class="cluster">
+              <span class="tag tag--warm">Warm tag</span>
+              <span class="tag tag--cool">Cool tag</span>
+              <span class="tag tag--sun">Highlight</span>
+              <span class="tag tag--neutral">Neutral</span>
+            </div>
+            <div class="cluster">
+              <span class="tag tag--done">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10" /></svg>
+                Ready
+              </span>
+              <span class="tag tag--sun">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l3 2" /></svg>
+                In progress
+              </span>
+              <span class="tag tag--todo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                To do
+              </span>
+            </div>
+            <div class="cluster">
+              <span class="badge">3</span>
+              <span class="badge badge--warm">12</span>
+              <span>Number badges, for counts and section numbers</span>
+            </div>
+            <p>Placeholder text looks like this: <mark class="placeholder">[Add your text here]</mark>. Search for <code>placeholder</code> to find every one left to fill in.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Forms ================= -->
+      <section class="section section--warm kit-section" id="forms" aria-labelledby="forms-title">
+        <div class="container">
+          <h2 id="forms-title">Form controls</h2>
+          <p class="lead">Every field has a visible label above it. Errors show an icon and a message, not just a red border. This form is for show and doesn't send anything.</p>
+
+          <form class="kit-form card" action="#" novalidate>
+            <div class="field">
+              <label for="kit-name">Your name</label>
+              <input class="input" id="kit-name" name="name" type="text" autocomplete="name" placeholder="For example, Sam" />
+            </div>
+
+            <div class="field">
+              <label for="kit-email">Email</label>
+              <p class="field__hint" id="kit-email-hint">We'll only use this to send Spark updates.</p>
+              <input class="input" id="kit-email" name="email" type="email" autocomplete="email" aria-describedby="kit-email-hint" />
+            </div>
+
+            <div class="field field--error">
+              <label for="kit-age">Age</label>
+              <input class="input" id="kit-age" name="age" type="text" inputmode="numeric" value="twelve" aria-invalid="true" aria-describedby="kit-age-error" />
+              <p class="field__error" id="kit-age-error">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 7v6M12 17h.01" /></svg>
+                Please type your age as a number, like 12.
+              </p>
+            </div>
+
+            <div class="field">
+              <label for="kit-role">I am a…</label>
+              <select class="select" id="kit-role" name="role">
+                <option>Student</option>
+                <option>Teacher</option>
+                <option>Parent</option>
+                <option>Just curious</option>
+              </select>
+            </div>
+
+            <fieldset class="fieldset">
+              <legend>Which half do you like best?</legend>
+              <label class="choice"><input type="radio" name="half" value="warm" checked /> <span>The warm orange half</span></label>
+              <label class="choice"><input type="radio" name="half" value="cool" /> <span>The cool blue half</span></label>
+              <label class="choice"><input type="radio" name="half" value="none" disabled /> <span>Neither (disabled)</span></label>
+            </fieldset>
+
+            <div class="field">
+              <label for="kit-message">Message</label>
+              <textarea class="textarea" id="kit-message" name="message" placeholder="Tell us what you think"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="kit-disabled">Disabled field</label>
+              <input class="input" id="kit-disabled" type="text" value="You can't edit this" disabled />
+            </div>
+
+            <label class="choice"><input type="checkbox" name="updates" checked /> <span>Send me updates about Spark</span></label>
+
+            <div class="cluster kit-form__actions">
+              <button class="btn btn--primary" type="button">Send (demo only)</button>
+              <button class="btn btn--ghost" type="reset">Clear</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ================= Shape & space ================= -->
+      <section class="section kit-section" id="shape" aria-labelledby="shape-title">
+        <div class="container">
+          <h2 id="shape-title">Shape and space</h2>
+          <p class="lead">Spacing grows on a 4px base. Corners are round and friendly. Shadows are soft and tinted navy.</p>
+
+          <h3>Spacing</h3>
+          <ul class="space-scale" role="list">
+            <li><span style="width:var(--space-2)"></span><code>--space-2</code> 8px</li>
+            <li><span style="width:var(--space-4)"></span><code>--space-4</code> 16px</li>
+            <li><span style="width:var(--space-5)"></span><code>--space-5</code> 24px</li>
+            <li><span style="width:var(--space-6)"></span><code>--space-6</code> 32px</li>
+            <li><span style="width:var(--space-7)"></span><code>--space-7</code> 48px</li>
+            <li><span style="width:var(--space-8)"></span><code>--space-8</code> 64px</li>
+            <li><span style="width:var(--space-9)"></span><code>--space-9</code> 96px</li>
+          </ul>
+
+          <h3>Corners and shadows</h3>
+          <ul class="row row--3 shape-demo" role="list">
+            <li><div class="shape-tile" style="border-radius:var(--radius-sm);box-shadow:var(--shadow-sm)"><code>--radius-sm</code><code>--shadow-sm</code></div></li>
+            <li><div class="shape-tile" style="border-radius:var(--radius-md);box-shadow:var(--shadow-md)"><code>--radius-md</code><code>--shadow-md</code></div></li>
+            <li><div class="shape-tile" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)"><code>--radius-lg</code><code>--shadow-lg</code></div></li>
+          </ul>
+
+          <h3>Screen sizes</h3>
+          <p>Layouts start as a single column on phones, then spread out: two columns from 640px, three from 1024px. The docs table of contents becomes a sticky sidebar from 960px.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= Footer (same on every page) ================= -->
+    <footer class="site-footer on-inverse">
+      <div class="container">
+        <div class="site-footer__inner">
+          <div>
+            <a class="brand" href="home.html" aria-label="Spark home">
+              <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M4 30a28 28 0 0 1 56 0z" fill="#ff8500" />
+                <path d="M4 34a28 28 0 0 0 56 0z" fill="#00b4d8" />
+                <path d="M32 22l2.6 7.4L42 32l-7.4 2.6L32 42l-2.6-7.4L22 32l7.4-2.6z" fill="#ffd166" stroke="#03045e" stroke-width="2.5" stroke-linejoin="round" />
+              </svg>
+              <span>Spark</span>
+            </a>
+            <p class="site-footer__blurb">A senior capstone project by Declan.</p>
+          </div>
+          <nav aria-labelledby="footer-explore">
+            <h2 id="footer-explore">Explore</h2>
+            <ul>
+              <li><a href="home.html">Home</a></li>
+              <li><a href="./">Docs</a></li>
+              <li><a href="design.html">Design kit</a></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="footer-more">
+            <h2 id="footer-more">More from Declan</h2>
+            <ul>
+              <li><a href="../personal-site/" target="_blank" rel="noopener noreferrer">Personal site<span class="visually-hidden"> (opens in new tab)</span></a></li>
+              <li><a href="../">All senior projects</a></li>
+            </ul>
+          </nav>
+        </div>
+        <p class="site-footer__legal">Visual prototype, 2026. Features shown here aren't working yet.</p>
+      </div>
+    </footer>
+  </body>
+</html>

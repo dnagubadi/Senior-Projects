@@ -9,7 +9,7 @@ Declan's senior-year repo. Changes come from two places: Declan's local VS Code 
 | `index.html` | Landing page linking to every project |
 | `personal-site/` | Personal hub: home, about, projects, interests, resume/CV |
 | `guitar-site/` | Guitar site: my music, experience, student materials, booking |
-| `spark-site/` | Spark research one-pager (in progress, not built yet) |
+| `spark-site/` | Spark capstone docs site (`index.html`, copy in `content/docs/*.md`); `home.html` and `design.html` parked for later |
 | `assets/` | Shared media: `images/`, `docs/` (resume PDF), `icons/` |
 | `chroma-field/`, `no-man/`, `catan-dojo/` | Older projects. Leave untouched unless asked |
 
@@ -36,7 +36,9 @@ Each site is standalone with its own `css/` and `js/`. Colors, fonts and spacing
 - Palette: `#562a0e` `#78380c` `#c8691c` `#d09259` `#e4ceaf`.
 
 **Spark site**: orange-to-blue research brand. Research content is developed in a separate project; only the web page is built here.
-- Palette: `#ff5400` `#ff6d00` `#ff8500` `#ff9100` `#ff9e00` `#00b4d8` `#0096c7` `#0077b6` `#023e8a` `#03045e`.
+- Palette: `#ff5400` `#ff6d00` `#ff8500` `#ff9100` `#ff9e00` `#00b4d8` `#0096c7` `#0077b6` `#023e8a` `#03045e`, plus cream, peach, sky, sun, ember and slate supports (see `spark-site/css/tokens.css`).
+- Motif: orange-over-blue hemisphere with a yellow spark at the seam. Audience baseline is children: 18px+ body, 48px tap targets, never color alone.
+- Fonts: Bricolage Grotesque (headings, buttons), Atkinson Hyperlegible Next (body).
 
 ## Preview
 

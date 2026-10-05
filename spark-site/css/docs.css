@@ -1,0 +1,345 @@
+/* ==========================================================================
+   Docs page: intro, sticky table of contents, section blocks, prose.
+   ========================================================================== */
+
+.docs-hero {
+  position: relative;
+  padding-block: var(--space-7) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* Thin half-sun peeking over the bottom edge */
+.docs-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: max(-6rem, -10vw);
+  bottom: -9rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--orange-300) 0 50%, var(--blue-300) 50% 100%);
+  opacity: 0.22;
+}
+
+.docs-hero h1 { font-size: clamp(2.25rem, 1.8rem + 2.4vw, 3.75rem); }
+
+/* ---- Two-column layout on wide screens ---- */
+.docs-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-block: var(--space-6) var(--space-9);
+}
+
+@media (min-width: 60rem) {
+  .docs-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+}
+
+/* ---- Table of contents ---- */
+.docs-toc {
+  flex: none;
+}
+
+@media (min-width: 60rem) {
+  .docs-toc {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-5));
+    width: 16rem;
+  }
+}
+
+.docs-toc__details {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.docs-toc__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--tap-target);
+  padding: var(--space-3) var(--space-5);
+  cursor: pointer;
+  list-style: none;
+}
+
+.docs-toc__summary::-webkit-details-marker { display: none; }
+
+.docs-toc__summary:focus-visible { border-radius: var(--radius-lg); }
+
+.docs-toc__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+}
+
+.docs-toc__chevron {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform var(--duration-base) var(--ease);
+}
+
+.docs-toc__details[open] .docs-toc__chevron { transform: rotate(180deg); }
+
+/* On desktop the list is always open (docs.js keeps it open), so hide the toggle cue */
+@media (min-width: 60rem) {
+  .docs-toc__summary { cursor: default; pointer-events: none; }
+  .docs-toc__chevron { display: none; }
+}
+
+.docs-toc__list {
+  margin: 0;
+  padding: 0 var(--space-3) var(--space-4);
+  list-style: none;
+}
+
+.docs-toc__list li + li { margin-top: var(--space-1); }
+
+.docs-toc__list a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--tap-target);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease);
+}
+
+.docs-toc__list a:hover {
+  background: var(--color-surface-warm);
+  color: var(--color-text);
+}
+
+.docs-toc__num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: none;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 50%;
+  font-size: var(--text-sm);
+}
+
+/* Active section (set by docs.js): filled number + bar on the left, not color alone */
+.docs-toc__list a[aria-current="true"] {
+  background: var(--color-surface-cool);
+  box-shadow: inset 4px 0 0 var(--blue-600);
+}
+
+.docs-toc__list a[aria-current="true"] .docs-toc__num {
+  border-color: var(--blue-700);
+  background: var(--blue-700);
+  color: var(--color-text-inverse);
+}
+
+/* Links to the extra pages, under the numbered list */
+.docs-toc__extra {
+  margin: 0 var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-3) 0;
+  border-top: 2px dashed var(--color-border);
+}
+
+.docs-toc__extra-title {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-muted);
+}
+
+.docs-toc__extra ul { margin: 0; padding: 0; list-style: none; }
+.docs-toc__extra li + li { margin-top: 0; }
+
+.docs-toc__extra a {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap-target);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+}
+
+/* ---- Content column ---- */
+.docs-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 50rem;
+}
+
+.doc-section + .doc-section {
+  margin-top: var(--space-8);
+  padding-top: var(--space-7);
+  border-top: 2px dashed var(--color-border);
+}
+
+.doc-section__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.doc-section__header h2 { margin: 0; }
+
+/* Numbered hemisphere ring: orange top, blue bottom, navy number on white */
+.doc-section__num {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--white) 0 54%, transparent 55%),
+    linear-gradient(180deg, var(--orange-600) 0 50%, var(--blue-500) 50% 100%);
+  color: var(--blue-700);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--weight-heavy);
+  box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 6px var(--blue-700);
+}
+
+/* ---- Prose (rendered Markdown) ---- */
+.prose { max-width: var(--measure); }
+
+.prose > :last-child { margin-bottom: 0; }
+
+.prose h3 { margin-top: var(--space-6); }
+.prose h4 { margin-top: var(--space-5); margin-bottom: var(--space-3); }
+
+.prose ul { list-style: none; padding-left: 0; }
+
+.prose ul > li {
+  position: relative;
+  padding-left: 1.75em;
+}
+
+/* Bullets are tiny hemispheres */
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.2em;
+  top: 0.5em;
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--orange-600) 0 50%, var(--blue-500) 50% 100%);
+}
+
+.prose ol { padding-left: 1.5em; }
+.prose ol > li::marker { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--ember); }
+
+.prose blockquote {
+  margin-inline: 0;
+  padding: var(--space-4) var(--space-5);
+  border-left: 6px solid var(--blue-500);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-cool);
+}
+
+.prose blockquote > :last-child { margin-bottom: 0; }
+
+.prose img {
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.prose__loading {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.prose__error {
+  padding: var(--space-4);
+  border: 2px dashed var(--color-error);
+  border-radius: var(--radius-md);
+  color: var(--color-error);
+}
+
+/* Tables scroll sideways on small screens instead of squashing */
+.table-wrap {
+  margin-bottom: var(--space-5);
+  overflow-x: auto;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.table-wrap:focus-visible { outline-offset: 2px; }
+
+.prose table {
+  width: 100%;
+  min-width: 34rem;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.prose th,
+.prose td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose th {
+  background: var(--color-surface-warm);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+}
+
+.prose tr:last-child td { border-bottom: 0; }
+
+/* ---- Timeline variant: the list becomes a vertical line of stops ---- */
+.prose--timeline ul {
+  position: relative;
+  padding-left: 0;
+}
+
+.prose--timeline ul::before {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--orange-500), var(--blue-500));
+}
+
+.prose--timeline ul > li {
+  padding-left: 3rem;
+}
+
+.prose--timeline ul > li + li { margin-top: var(--space-5); }
+
+.prose--timeline ul > li::before {
+  left: 0.2rem;
+  top: 0.2em;
+  width: 1.4rem;
+  height: 1.4rem;
+  box-shadow: 0 0 0 4px var(--color-bg);
+}
+
+.prose--timeline ul > li > strong:first-child {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--ember);
+}
+
+.docs-back {
+  margin-top: var(--space-8);
+}
