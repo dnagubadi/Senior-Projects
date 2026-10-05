@@ -1,15 +1,19 @@
-[[Explain what Sparkplug is in one or two sentences.]]
+The Sparkplug is the physical controller you use to explore your Spark. It has a **joystick, 3 knobs, 4 buttons and a big Ignite button**.
 
-# How it connects to Spark
+When a new Spark loads, the AI relabels every control, so one installation works for any subject.
 
-[[Describe how Sparkplug fits into the bigger project. Is it a part, a tool, a feature or a prototype?]]
+# Same controls, different Sparks
 
-# How it works
+| Control | Ocean Spark | Music Spark |
+| --- | --- | --- |
+| Joystick | Swim around | Move between instruments |
+| Knob 1 | Depth | Tempo |
+| Knob 2 | Temperature | Mood |
+| Ignite | Make a new creature | Write a new riff |
 
-1. [[Step one]]
-2. [[Step two]]
-3. [[Step three]]
+# Building it
 
-# Status
+- **First prototype:** wired up with an Arduino.
+- **Final version:** a custom enclosure made with woodworking and 3D printing.
 
-[[What exists today, and what still needs to be built?]]
+[[Add a sketch or photo of the controller layout once it exists.]]

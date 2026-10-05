@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spark · Declan's capstone project</title>
-    <meta name="description" content="Spark is Declan's senior capstone project. This visual prototype shows the design system and project documentation." />
+    <title>Spark · Find your Spark</title>
+    <meta name="description" content="Spark, an interactive installation that turns anything you're curious about into your own journey. Project docs: general idea, idea, precedence, frameworks, Sparkplug, research, materials and timeline." />
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/docs.css" />
+    <script src="js/docs.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -32,270 +33,119 @@
           </svg>
           <span>Spark</span>
         </a>
-        <nav class="site-nav" aria-label="Main">
-          <ul>
-            <li><a href="./" aria-current="page">Home</a></li>
-            <li><a href="docs.html">Docs</a></li>
-            <li><a href="design.html">Design kit</a></li>
-          </ul>
-        </nav>
       </div>
     </header>
 
     <main id="main">
-      <!-- ================= Hero ================= -->
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="container hero__inner">
-          <div class="hero__copy">
-            <p class="eyebrow"><span class="hemi-dot" aria-hidden="true"></span> Senior capstone project</p>
-            <h1 id="hero-title">Two halves.<br /><span class="hero__accent">One spark.</span></h1>
-            <p class="lead">
-              Spark is my senior capstone project.
-              <mark class="placeholder">[Add one or two sentences: what Spark is, who it's for, and what it helps them do.]</mark>
-            </p>
-            <div class="cluster hero__actions">
-              <a class="btn btn--primary btn--lg" href="docs.html">
-                Read the project docs
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-              <a class="btn btn--secondary btn--lg" href="docs.html#sparkplug">What's Sparkplug?</a>
-            </div>
-          </div>
-
-          <div class="hero__art">
-            <div class="hemisphere">
-              <svg viewBox="0 0 400 400" role="img" aria-labelledby="hemi-title">
-                <title id="hemi-title">The Spark hemisphere: an orange half-circle above a blue half-circle, with a yellow spark where they meet.</title>
-                <defs>
-                  <linearGradient id="hemi-sun" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stop-color="#ff9e00" />
-                    <stop offset="0.55" stop-color="#ff8500" />
-                    <stop offset="1" stop-color="#ff5400" />
-                  </linearGradient>
-                  <linearGradient id="hemi-sea" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stop-color="#00b4d8" />
-                    <stop offset="0.45" stop-color="#0077b6" />
-                    <stop offset="1" stop-color="#03045e" />
-                  </linearGradient>
-                  <clipPath id="hemi-sea-clip"><path d="M40 212a160 160 0 0 0 320 0z" /></clipPath>
-                  <clipPath id="hemi-sun-clip"><path d="M40 188a160 160 0 0 1 320 0z" /></clipPath>
-                </defs>
-
-                <circle class="hemisphere__orbit" cx="200" cy="200" r="190" fill="none" stroke="#03045e" stroke-opacity="0.18" stroke-width="2" stroke-dasharray="2 12" stroke-linecap="round" />
-
-                <g class="hemisphere__top">
-                  <path d="M40 188a160 160 0 0 1 320 0z" fill="url(#hemi-sun)" />
-                  <g clip-path="url(#hemi-sun-clip)" fill="none" stroke="#ffd166" stroke-opacity="0.55" stroke-width="6" stroke-linecap="round">
-                    <path d="M200 188 L200 40" /><path d="M200 188 L95 70" /><path d="M200 188 L305 70" />
-                    <path d="M200 188 L50 130" /><path d="M200 188 L350 130" />
-                  </g>
-                </g>
-
-                <g class="hemisphere__bottom">
-                  <path d="M40 212a160 160 0 0 0 320 0z" fill="url(#hemi-sea)" />
-                  <g clip-path="url(#hemi-sea-clip)" fill="none" stroke="#e3f6fb" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round">
-                    <path d="M30 240q25-14 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0" />
-                    <path d="M30 278q25-14 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0" />
-                    <path d="M30 316q25-14 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0" />
-                  </g>
-                </g>
-
-                <path class="hemisphere__spark" d="M200 162l9.5 28.5L238 200l-28.5 9.5L200 238l-9.5-28.5L162 200l28.5-9.5z" fill="#ffd166" stroke="#03045e" stroke-width="5" stroke-linejoin="round" />
-
-                <circle cx="62" cy="62" r="7" fill="#ff9100" />
-                <circle cx="352" cy="330" r="9" fill="#00b4d8" />
-                <circle cx="350" cy="78" r="4" fill="#03045e" fill-opacity="0.35" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================= Brief explanation ================= -->
-      <section class="section" aria-labelledby="about-title">
+      <!-- ================= Docs intro ================= -->
+      <header class="docs-hero">
         <div class="container">
-          <div class="section__header">
-            <p class="eyebrow">The short version</p>
-            <h2 id="about-title">What is Spark?</h2>
-            <p class="lead">
-              <mark class="placeholder">[Add a short paragraph (3 or 4 sentences) explaining the problem Spark looks at and why it matters. Write it so a 10-year-old could follow it.]</mark>
-            </p>
-          </div>
-
-          <ul class="row row--3" role="list">
-            <li>
-              <article class="card card--link">
-                <span class="card__icon card__icon--warm" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#a83800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V17h6v-.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z" /></svg>
-                </span>
-                <h3><a href="docs.html#idea">The idea</a></h3>
-                <p><mark class="placeholder">[One sentence on the core idea.]</mark></p>
-                <p class="card__footer card__arrow">
-                  Read section 2
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </p>
-              </article>
-            </li>
-            <li>
-              <article class="card card--link">
-                <span class="card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#023e8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0V8zM12 18v4" /></svg>
-                </span>
-                <h3><a href="docs.html#sparkplug">Sparkplug</a></h3>
-                <p><mark class="placeholder">[One sentence on what Sparkplug is.]</mark></p>
-                <p class="card__footer card__arrow">
-                  Read section 5
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </p>
-              </article>
-            </li>
-            <li>
-              <article class="card card--link">
-                <span class="card__icon card__icon--warm" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#a83800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.3L4.5 19A2 2 0 0 0 6.2 22h11.6a2 2 0 0 0 1.7-3L14 9.3V2M8.5 2h7M7 16h10" /></svg>
-                </span>
-                <h3><a href="docs.html#research">The research</a></h3>
-                <p><mark class="placeholder">[One sentence on how you researched it.]</mark></p>
-                <p class="card__footer card__arrow">
-                  Read section 6
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </p>
-              </article>
-            </li>
-          </ul>
+          <p class="eyebrow"><span class="hemi-dot" aria-hidden="true"></span> Creative Technology &amp; Design Capstone · Declan</p>
+          <h1>Find your Spark.</h1>
+          <p class="lead">An interactive installation that turns anything you're curious about into your own journey. Here's the whole project, from the first idea to the spring expo.</p>
         </div>
-      </section>
+      </header>
 
-      <!-- ================= Two halves ================= -->
-      <section class="section halves" aria-labelledby="halves-title">
-        <div class="container">
-          <div class="section__header section__header--center">
-            <p class="eyebrow">The hemisphere</p>
-            <h2 id="halves-title">Every spark needs two sides</h2>
-            <p class="lead">The Spark mark is a warm half and a cool half that meet in the middle. Each half stands for one side of the project.</p>
-          </div>
+      <div class="container docs-layout">
+        <!-- ================= Table of contents =================
+             To add or rename a section: update this list AND the matching
+             <section> below (the href must match the section id). -->
+        <aside class="docs-toc" aria-label="On this page">
+          <details class="docs-toc__details" open>
+            <summary class="docs-toc__summary">
+              <span class="docs-toc__title">On this page</span>
+              <svg class="docs-toc__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </summary>
+            <nav aria-label="Documentation sections">
+              <ol class="docs-toc__list">
+                <li><a href="#general-idea"><span class="docs-toc__num">1</span> General Idea</a></li>
+                <li><a href="#idea"><span class="docs-toc__num">2</span> Idea</a></li>
+                <li><a href="#precedence"><span class="docs-toc__num">3</span> Precedence</a></li>
+                <li><a href="#frameworks"><span class="docs-toc__num">4</span> Frameworks</a></li>
+                <li><a href="#sparkplug"><span class="docs-toc__num">5</span> Sparkplug</a></li>
+                <li><a href="#research"><span class="docs-toc__num">6</span> Research</a></li>
+                <li><a href="#materials"><span class="docs-toc__num">7</span> Materials</a></li>
+                <li><a href="#timeline"><span class="docs-toc__num">8</span> Timeline</a></li>
+              </ol>
+            </nav>
+          </details>
+        </aside>
 
-          <div class="halves__pair">
-            <article class="half half--warm">
-              <span class="half__shape" aria-hidden="true"></span>
-              <p class="tag tag--warm">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 14a10 10 0 0 1 20 0z" /></svg>
-                Top half
-              </p>
-              <h3><mark class="placeholder">[Name the warm side]</mark></h3>
-              <p><mark class="placeholder">[Describe what the orange half stands for in Spark.]</mark></p>
-            </article>
+        <!-- ================= Sections =================
+             The text of each section lives in content/docs/*.md.
+             Edit those Markdown files; you don't need to touch this HTML. -->
+        <article class="docs-content">
+          <noscript>
+            <p class="callout callout--warm">The section text loads with JavaScript. Turn it on, or read the files in <code>content/docs/</code>.</p>
+          </noscript>
 
-            <span class="halves__spark" aria-hidden="true">
-              <svg viewBox="0 0 40 40"><path d="M20 4l4.5 11.5L36 20l-11.5 4.5L20 36l-4.5-11.5L4 20l11.5-4.5z" fill="#ffd166" stroke="#03045e" stroke-width="3" stroke-linejoin="round" /></svg>
-            </span>
+          <section class="doc-section" id="general-idea" aria-labelledby="general-idea-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">1</span>
+              <h2 id="general-idea-title">General Idea</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/01-general-idea.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
 
-            <article class="half half--cool">
-              <span class="half__shape" aria-hidden="true"></span>
-              <p class="tag tag--cool">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 10a10 10 0 0 0 20 0z" /></svg>
-                Bottom half
-              </p>
-              <h3><mark class="placeholder">[Name the cool side]</mark></h3>
-              <p><mark class="placeholder">[Describe what the blue half stands for in Spark.]</mark></p>
-            </article>
-          </div>
-        </div>
-      </section>
+          <section class="doc-section" id="idea" aria-labelledby="idea-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">2</span>
+              <h2 id="idea-title">Idea</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/02-idea.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
 
-      <!-- ================= Docs preview ================= -->
-      <section class="section section--inverse on-inverse docs-preview" aria-labelledby="docs-title">
-        <div class="container">
-          <div class="docs-preview__layout">
-            <div class="section__header">
-              <p class="eyebrow">Documentation</p>
-              <h2 id="docs-title">The whole project, in eight parts</h2>
-              <p class="lead">The docs page walks through Spark from the first idea to the timeline. Jump straight to any part.</p>
-              <div class="cluster">
-                <a class="btn btn--primary" href="docs.html">Open the docs</a>
-                <a class="btn btn--ghost" href="docs.html#timeline">See the timeline</a>
-              </div>
-            </div>
+          <section class="doc-section" id="precedence" aria-labelledby="precedence-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">3</span>
+              <h2 id="precedence-title">Precedence</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/03-precedence.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
 
-            <ol class="docs-index" role="list">
-              <li><a href="docs.html#general-idea"><span class="badge badge--warm">1</span> General Idea</a></li>
-              <li><a href="docs.html#idea"><span class="badge badge--warm">2</span> Idea</a></li>
-              <li><a href="docs.html#precedence"><span class="badge badge--warm">3</span> Precedence</a></li>
-              <li><a href="docs.html#frameworks"><span class="badge badge--warm">4</span> Frameworks</a></li>
-              <li><a href="docs.html#sparkplug"><span class="badge badge--warm">5</span> Sparkplug</a></li>
-              <li><a href="docs.html#research"><span class="badge badge--warm">6</span> Research</a></li>
-              <li><a href="docs.html#materials"><span class="badge badge--warm">7</span> Materials</a></li>
-              <li><a href="docs.html#timeline"><span class="badge badge--warm">8</span> Timeline</a></li>
-            </ol>
-          </div>
-        </div>
-      </section>
+          <section class="doc-section" id="frameworks" aria-labelledby="frameworks-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">4</span>
+              <h2 id="frameworks-title">Frameworks</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/04-frameworks.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
 
-      <!-- ================= Status ================= -->
-      <section class="section section--cool" aria-labelledby="status-title">
-        <div class="container">
-          <div class="section__header">
-            <p class="eyebrow">Where things are</p>
-            <h2 id="status-title">Project status</h2>
-            <p class="lead">Spark is still being built. Here is what's ready and what's coming.</p>
-          </div>
+          <section class="doc-section" id="sparkplug" aria-labelledby="sparkplug-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">5</span>
+              <h2 id="sparkplug-title">Sparkplug</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/05-sparkplug.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
 
-          <ul class="row row--3" role="list">
-            <li>
-              <article class="card">
-                <p class="cluster">
-                  <span class="tag tag--done">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10" /></svg>
-                    Ready
-                  </span>
-                </p>
-                <h3>Design system</h3>
-                <p>Colors, fonts, buttons, cards and form styles for the Spark site.</p>
-                <p class="card__footer"><a href="design.html">See the design kit</a></p>
-              </article>
-            </li>
-            <li>
-              <article class="card">
-                <p class="cluster">
-                  <span class="tag tag--sun">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l3 2" /></svg>
-                    In progress
-                  </span>
-                </p>
-                <h3>Project docs</h3>
-                <p>Eight sections describing Spark in depth. Some parts are still drafts.</p>
-                <p class="card__footer"><a href="docs.html">Read the docs</a></p>
-              </article>
-            </li>
-            <li>
-              <article class="card">
-                <p class="cluster">
-                  <span class="tag tag--neutral">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke-dasharray="3 4" /></svg>
-                    Coming later
-                  </span>
-                </p>
-                <h3>Working site</h3>
-                <p>This version is a visual prototype. Interactive features come later.</p>
-                <p class="card__footer"><a href="docs.html#timeline">Check the timeline</a></p>
-              </article>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <section class="doc-section" id="research" aria-labelledby="research-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">6</span>
+              <h2 id="research-title">Research</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/06-research.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
 
-      <!-- ================= Closing CTA ================= -->
-      <section class="section cta" aria-labelledby="cta-title">
-        <div class="container container--narrow cta__inner">
-          <span class="hemi-dot cta__dot" aria-hidden="true"></span>
-          <h2 id="cta-title">Curious how it all fits together?</h2>
-          <p class="lead">Start with the general idea, then follow the docs section by section.</p>
-          <div class="cluster cta__actions">
-            <a class="btn btn--primary btn--lg" href="docs.html#general-idea">Start reading</a>
-            <a class="btn btn--secondary btn--lg" href="design.html">Browse the design kit</a>
-          </div>
-        </div>
-      </section>
+          <section class="doc-section" id="materials" aria-labelledby="materials-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">7</span>
+              <h2 id="materials-title">Materials</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/07-materials.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <section class="doc-section" id="timeline" aria-labelledby="timeline-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">8</span>
+              <h2 id="timeline-title">Timeline</h2>
+            </header>
+            <div class="prose prose--timeline" data-doc="content/docs/08-timeline.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <p class="docs-back"><a class="btn btn--secondary" href="#main">Back to top</a></p>
+        </article>
+      </div>
     </main>
 
     <!-- ================= Footer (same on every page) ================= -->
@@ -313,14 +163,6 @@
             </a>
             <p class="site-footer__blurb">A senior capstone project by Declan.</p>
           </div>
-          <nav aria-labelledby="footer-explore">
-            <h2 id="footer-explore">Explore</h2>
-            <ul>
-              <li><a href="./">Home</a></li>
-              <li><a href="docs.html">Docs</a></li>
-              <li><a href="design.html">Design kit</a></li>
-            </ul>
-          </nav>
           <nav aria-labelledby="footer-more">
             <h2 id="footer-more">More from Declan</h2>
             <ul>
@@ -329,7 +171,7 @@
             </ul>
           </nav>
         </div>
-        <p class="site-footer__legal">Visual prototype, 2026. Features shown here aren't working yet.</p>
+        <p class="site-footer__legal">Spark is a work in progress, building toward the spring expo.</p>
       </div>
     </footer>
   </body>

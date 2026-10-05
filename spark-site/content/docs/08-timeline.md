@@ -1,8 +1,10 @@
-What's done, what's happening now, and what comes next.
+Spark builds toward the spring expo.
 
-- **[[Month, year]]**: [[Project kickoff: when you chose Spark]]
-- **[[Month, year]]**: [[Research phase]]
-- **October 2026**: Website visual prototype: colors, fonts, buttons and these docs.
-- **[[Month, year]]**: [[Pitch presentation]]
-- **[[Month, year]]**: [[Build the working version]]
-- **[[Month, year]]**: [[Final presentation]]
+- **October 2026** Pitch, plus this website.
+- **Next step 1** Design my first journey and its Spark format.
+- **Next step 2** Prototype the controller with an Arduino.
+- **Next step 3** Generate a first Spark with AI, start to finish.
+- **Next step 4** Test it with people outside class.
+- **Spring expo** Show the controller, web platform, 4 to 5 journeys and the full museum installation.
+
+[[Add a target month to each next step.]]

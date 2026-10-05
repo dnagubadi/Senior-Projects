@@ -9,7 +9,7 @@ Declan's senior-year repo. Changes come from two places: Declan's local VS Code 
 | `index.html` | Landing page linking to every project |
 | `personal-site/` | Personal hub: home, about, projects, interests, resume/CV |
 | `guitar-site/` | Guitar site: my music, experience, student materials, booking |
-| `spark-site/` | Spark capstone site: home, docs, design kit (visual prototype; docs copy in `content/docs/*.md`) |
+| `spark-site/` | Spark capstone docs site (`index.html`, copy in `content/docs/*.md`); `home.html` and `design.html` parked for later |
 | `assets/` | Shared media: `images/`, `docs/` (resume PDF), `icons/` |
 | `chroma-field/`, `no-man/`, `catan-dojo/` | Older projects. Leave untouched unless asked |
 

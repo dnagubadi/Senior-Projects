@@ -1,20 +1,29 @@
-[[Describe the idea in detail. Start with the problem, then explain how Spark responds to it.]]
-
 # The problem
 
-[[What isn't working today? Who does it affect?]]
+- Most exhibits are built around one fixed topic.
+- Learning usually starts with facts, not curiosity.
+- Visitors leave without a next step.
 
-# How Spark helps
+> **The big question:** what if one exhibit could become anything you're curious about, and help you keep exploring after you leave?
 
-[[Walk through what someone actually does with Spark, step by step.]]
+# A visit takes five steps
 
-1. [[First step]]
-2. [[Second step]]
-3. [[Third step]]
+1. **Ask:** say what you're curious about.
+2. **Glow:** AI builds your Spark as the room lights up.
+3. **Explore:** the joystick, knobs and buttons move you through it.
+4. **Create:** press Ignite to make something new.
+5. **Keep:** take home a card that opens your Spark online.
 
-# What makes it different
+# Example: Maya's Volcano Spark
 
-- [[Something Spark does that other projects don't]]
-- [[Another difference]]
+Maya says "volcanoes." The room glows orange as her Volcano Spark forms. She turns a knob to heat the magma, presses Ignite to erupt a new island, and leaves with a card that opens her Spark at home.
 
-> **Big question:** [[Write the main question your capstone is trying to answer.]]
+# User flow
+
+1. Walk up to Spark.
+2. Choose a subject.
+3. AI builds your Spark.
+4. Play with the controller.
+5. **Try another subject?** Yes takes you back to step 2. No moves on.
+6. **Save it?** Saved Sparks go to **My Sparks**.
+7. From My Sparks you can share it to the library, edit it in **Spark Studio**, or build one from scratch.

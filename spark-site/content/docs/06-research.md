@@ -1,21 +1,24 @@
-[[Summarize your research in 2 or 3 sentences: what you wanted to find out and what you learned.]]
+# Precedents
 
-# Questions I asked
+I studied existing projects that each do one part of Spark: Project Genie, Dataland and the Exploratorium. See the Precedence section for what each one taught me.
 
-- [[Research question 1]]
-- [[Research question 2]]
+# Questions I'm asking people
 
-# Methods
+- What subject would you want to explore first?
+- What would keep you playing past the first minute?
+- Do you know a space where I could test it?
 
-[[How did you research? For example: interviews, surveys, user testing, reading papers, or studying existing products.]]
+# Testing plan
 
-# What I found
+One of the next steps is testing Spark with people outside class. Playtesters try it out and tell me what's confusing.
 
-- **[[Finding]]**: [[Why it matters for Spark]]
-- **[[Finding]]**: [[Why it matters for Spark]]
-- **[[Finding]]**: [[Why it matters for Spark]]
+# What I've found so far
+
+[[Add findings from the pitch Q&A and early playtests here.]]
 
 # Sources
 
-1. [[Author, title, year, link]]
-2. [[Author, title, year, link]]
+1. Google DeepMind, *Project Genie*, 2026.
+2. Refik Anadol, *Dataland*, Los Angeles, 2026.
+3. Exploratorium, San Francisco.
+4. [[Add any other papers, articles or interviews.]]

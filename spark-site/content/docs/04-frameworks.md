@@ -1,16 +1,29 @@
-Frameworks are the ideas, methods and tools that Spark is built on.
+Spark is one installation that has to work for any subject. Three parts of the framework make that possible.
 
-# Design and learning frameworks
+# Journeys
 
-- **[[Framework name]]**: [[How it shapes Spark]]
-- **[[Framework name]]**: [[How it shapes Spark]]
+A journey is a game template that the AI fills in for whatever subject you pick. The plan is 4 to 5 journeys. The same journey can become an ocean, a volcano or a band, because the AI supplies the world, the characters and the goals.
 
-# Accessibility
+[[Name the first journey and describe how it plays.]]
 
-The site aims for the [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA guidelines. That means readable text sizes, strong color contrast, visible keyboard focus, and never using color alone to show meaning. A keyboard walk-through, screen reader check and 400% zoom test still need to be done by hand.
+# The Spark format
 
-# How the website is built
+Every Spark is saved in the same format, so it can be played on the installation, opened from a take-home card, edited in Spark Studio and shared to the library. Designing this format is one of the first next steps.
 
-- Plain HTML, CSS and a little JavaScript, with no frameworks or build step, so it loads fast on slow connections.
-- Colors, fonts and spacing live in one file of design tokens, so the whole look can change from one place.
-- These docs are written in Markdown files that are easy to edit.
+[[List what a Spark file holds, for example the subject, the journey, the world, and the control labels.]]
+
+# Controls that relabel themselves
+
+The Sparkplug always has the same physical controls, but the AI gives each one a new job when a new Spark loads. See the Sparkplug section for examples.
+
+# Designing for kids
+
+Kids are the baseline user, so the experience follows a few rules:
+
+- One clear action at a time, with the next step always obvious.
+- Physical controls that are big and easy to grab.
+- Plain words, short labels, and meaning that never depends on color alone.
+
+# This website
+
+The site follows the [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA guidelines: readable text sizes, strong contrast, visible keyboard focus and large tap targets. It's plain HTML, CSS and a little JavaScript with no build step, so it loads fast on slow connections.

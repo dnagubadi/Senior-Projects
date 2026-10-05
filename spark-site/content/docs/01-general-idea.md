@@ -1,26 +1,22 @@
-Spark is my senior capstone project. This page explains it from start to finish, one section at a time.
+Most of us learn the facts about a subject before we ever get curious about it. Spark flips that around and starts with curiosity. You name anything you wonder about, and AI turns it into a world you explore with your hands. You leave with your own Spark, and a reason to keep going.
 
-[[Write 2 or 3 sentences: the big picture of Spark. What is it, and why did you choose it?]]
+> **Why it matters:** people find their passions through curiosity and play, but most exhibits and classes offer one fixed topic and start with facts.
 
 # Who it's for
 
-[[Describe the people Spark is for. Mention their age range if it matters.]]
+Spark is for curious kids, teens and families. Kids are the baseline: if a kid can walk up and use it without help, everyone can.
 
-Everything on this site is written and designed so a kid could read it and find their way around: big buttons, plain words and clear headings.
+# The pieces
 
-# The hemisphere
+- **The installation:** a screen, a room that lights up, and a physical controller called the Sparkplug.
+- **Your Spark:** a world the AI builds around the subject you picked, using one of a few game templates called journeys.
+- **The web platform:** where you play, save, edit and build Sparks after your visit, plus a library of everyone's shared Sparks.
+- **A take-home card** that opens your Spark online.
 
-The Spark logo is a circle split into two halves: a warm orange half on top and a cool blue half below. Where the two halves meet, there's a small yellow spark.
+# Who's making it
 
-[[Explain what the two halves stand for in your project, and what the spark in the middle means.]]
+Spark is my Creative Technology & Design capstone. I'm the solo lead and I'm designing the framework and user flow myself. I'd love help with:
 
-# What's in these docs
-
-1. **General Idea**: the big picture (you're here)
-2. **Idea**: the concept in more detail
-3. **Precedence**: projects that came before Spark
-4. **Frameworks**: the ideas and tools Spark is built on
-5. **Sparkplug**: [[one line on what Sparkplug is]]
-6. **Research**: what I looked into and what I found
-7. **Materials**: what Spark is made with
-8. **Timeline**: what's done and what's next
+- **Fabrication:** woodworking and 3D printing for the controller
+- **Art and sound:** making the look and sound of a few Sparks
+- **Playtesting:** trying it out and telling me what's confusing
