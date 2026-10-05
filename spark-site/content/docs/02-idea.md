@@ -6,8 +6,6 @@ People are sometimes afraid of, or put off by, pursuing something they're passio
 - It's hard to know where to begin.
 - So the curiosity fades before it turns into anything.
 
-[[Add the moment or story that made you notice this problem.]]
-
 > **The big question:** what if trying something you're curious about felt like play, with nothing to lose, and gave you a reason to keep going?
 
 # Making a Spark takes five steps

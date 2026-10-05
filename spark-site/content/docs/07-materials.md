@@ -17,5 +17,3 @@ Spark is delivered as two halves, a physical prototype and a digital interface, 
 
 - The Spark web platform, with My Sparks, Spark Studio and the library
 - A screen to play your Spark on
-
-[[Add specific parts, quantities and costs once you've chosen them.]]
