@@ -7,7 +7,7 @@ Declan's senior year work. Every project lives in its own folder and runs as its
 | `index.html` | Landing page linking to every project |
 | `personal-site/` | Personal portfolio and hub: home, about, projects, interests, resume/CV |
 | `guitar-site/` | Guitar site: my music, experience, student materials, booking |
-| `spark-site/` | Spark: one-page research site (in progress) |
+| `spark-site/` | Spark: capstone site with home, docs and design kit (visual prototype) |
 | `assets/` | Media shared between sites: `images/`, `docs/` (resume PDF), `icons/` |
 | `chroma-field/` | Chroma Field |
 | `no-man/` | No-Man |
@@ -57,6 +57,32 @@ All paths are relative, so every site works from its folder on the Pages URL.
 ## Accessibility
 
 The sites are built toward WCAG 2.2 AA. A checklist of what is implemented and what still needs manual testing (screen readers, keyboard walk-throughs, zoom to 400%) will be added here as each site is finished.
+
+## Spark
+
+Lives in `spark-site/`. **Current scope: visual prototype only.** It sets the final look (colors, fonts, buttons, cards, forms) and holds the project docs. Nothing interactive works yet, and the demo form doesn't send anything.
+
+**Run it:** start the local server above, then open `http://localhost:8080/spark-site/`. Use the server rather than opening the file directly, because the docs page loads its sections with `fetch`.
+
+| Page | File |
+| --- | --- |
+| Home | `spark-site/index.html` |
+| Docs | `spark-site/docs.html` |
+| Design kit (every component and state) | `spark-site/design.html` |
+
+**Edit the docs copy** in `spark-site/content/docs/`, one Markdown file per section (`01-general-idea.md` to `08-timeline.md`). Use `#` for sub-headings (they render under the section title), plus lists, `**bold**`, links and `| tables |`. Write `[[like this]]` for a placeholder: it shows as a dashed orange marker. To add or rename a section, edit both the table of contents and the matching `<section>` in `docs.html`.
+
+**Edit home page copy** directly in `spark-site/index.html`. Placeholders there are `<mark class="placeholder">[...]</mark>`; search for `placeholder` to find every one left to fill in.
+
+**Design tokens and styles** are in `spark-site/css/`:
+
+- `tokens.css`: every color, font, type size, spacing, radius and shadow, with contrast ratios noted. Change the look here.
+- `base.css`: element defaults, links, focus rings, placeholder style.
+- `layout.css`: container, header, footer, sections, rows.
+- `components.css`: buttons, cards, tags, badges, form controls, callouts, the hemisphere.
+- `home.css`, `docs.css`, `design.css`: page-specific styles.
+
+Fonts are Bricolage Grotesque (headings, buttons) and Atkinson Hyperlegible Next (body), loaded from Google Fonts. Still to check by hand: screen reader, full keyboard walk-through, and 400% zoom.
 
 ## Chroma Field
 

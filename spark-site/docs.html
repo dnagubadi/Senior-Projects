@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docs · Spark</title>
+    <meta name="description" content="Spark project documentation: general idea, idea, precedence, frameworks, Sparkplug, research, materials and timeline." />
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap"
+    />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/docs.css" />
+    <script src="js/docs.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ================= Header (same on every page) ================= -->
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="./" aria-label="Spark home">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M4 30a28 28 0 0 1 56 0z" fill="#ff6d00" />
+            <path d="M4 34a28 28 0 0 0 56 0z" fill="#0077b6" />
+            <path d="M32 22l2.6 7.4L42 32l-7.4 2.6L32 42l-2.6-7.4L22 32l7.4-2.6z" fill="#ffd166" stroke="#03045e" stroke-width="2.5" stroke-linejoin="round" />
+          </svg>
+          <span>Spark</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="docs.html" aria-current="page">Docs</a></li>
+            <li><a href="design.html">Design kit</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ================= Docs intro ================= -->
+      <header class="docs-hero">
+        <div class="container">
+          <p class="eyebrow"><span class="hemi-dot" aria-hidden="true"></span> Project documentation</p>
+          <h1>How Spark works</h1>
+          <p class="lead">Everything about the project in one place, from the first idea to the timeline. Use the list of sections to jump around.</p>
+        </div>
+      </header>
+
+      <div class="container docs-layout">
+        <!-- ================= Table of contents =================
+             To add or rename a section: update this list AND the matching
+             <section> below (the href must match the section id). -->
+        <aside class="docs-toc" aria-label="On this page">
+          <details class="docs-toc__details" open>
+            <summary class="docs-toc__summary">
+              <span class="docs-toc__title">On this page</span>
+              <svg class="docs-toc__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </summary>
+            <nav aria-label="Documentation sections">
+              <ol class="docs-toc__list">
+                <li><a href="#general-idea"><span class="docs-toc__num">1</span> General Idea</a></li>
+                <li><a href="#idea"><span class="docs-toc__num">2</span> Idea</a></li>
+                <li><a href="#precedence"><span class="docs-toc__num">3</span> Precedence</a></li>
+                <li><a href="#frameworks"><span class="docs-toc__num">4</span> Frameworks</a></li>
+                <li><a href="#sparkplug"><span class="docs-toc__num">5</span> Sparkplug</a></li>
+                <li><a href="#research"><span class="docs-toc__num">6</span> Research</a></li>
+                <li><a href="#materials"><span class="docs-toc__num">7</span> Materials</a></li>
+                <li><a href="#timeline"><span class="docs-toc__num">8</span> Timeline</a></li>
+              </ol>
+            </nav>
+          </details>
+        </aside>
+
+        <!-- ================= Sections =================
+             The text of each section lives in content/docs/*.md.
+             Edit those Markdown files; you don't need to touch this HTML. -->
+        <article class="docs-content">
+          <noscript>
+            <p class="callout callout--warm">The section text loads with JavaScript. Turn it on, or read the files in <code>content/docs/</code>.</p>
+          </noscript>
+
+          <section class="doc-section" id="general-idea" aria-labelledby="general-idea-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">1</span>
+              <h2 id="general-idea-title">General Idea</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/01-general-idea.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <section class="doc-section" id="idea" aria-labelledby="idea-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">2</span>
+              <h2 id="idea-title">Idea</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/02-idea.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <section class="doc-section" id="precedence" aria-labelledby="precedence-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">3</span>
+              <h2 id="precedence-title">Precedence</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/03-precedence.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <section class="doc-section" id="frameworks" aria-labelledby="frameworks-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">4</span>
+              <h2 id="frameworks-title">Frameworks</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/04-frameworks.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <section class="doc-section" id="sparkplug" aria-labelledby="sparkplug-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">5</span>
+              <h2 id="sparkplug-title">Sparkplug</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/05-sparkplug.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <section class="doc-section" id="research" aria-labelledby="research-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">6</span>
+              <h2 id="research-title">Research</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/06-research.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <section class="doc-section" id="materials" aria-labelledby="materials-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">7</span>
+              <h2 id="materials-title">Materials</h2>
+            </header>
+            <div class="prose" data-doc="content/docs/07-materials.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <section class="doc-section" id="timeline" aria-labelledby="timeline-title">
+            <header class="doc-section__header">
+              <span class="doc-section__num" aria-hidden="true">8</span>
+              <h2 id="timeline-title">Timeline</h2>
+            </header>
+            <div class="prose prose--timeline" data-doc="content/docs/08-timeline.md"><p class="prose__loading">Loading section…</p></div>
+          </section>
+
+          <p class="docs-back"><a class="btn btn--secondary" href="#main">Back to top</a></p>
+        </article>
+      </div>
+    </main>
+
+    <!-- ================= Footer (same on every page) ================= -->
+    <footer class="site-footer on-inverse">
+      <div class="container">
+        <div class="site-footer__inner">
+          <div>
+            <a class="brand" href="./" aria-label="Spark home">
+              <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M4 30a28 28 0 0 1 56 0z" fill="#ff8500" />
+                <path d="M4 34a28 28 0 0 0 56 0z" fill="#00b4d8" />
+                <path d="M32 22l2.6 7.4L42 32l-7.4 2.6L32 42l-2.6-7.4L22 32l7.4-2.6z" fill="#ffd166" stroke="#03045e" stroke-width="2.5" stroke-linejoin="round" />
+              </svg>
+              <span>Spark</span>
+            </a>
+            <p class="site-footer__blurb">A senior capstone project by Declan.</p>
+          </div>
+          <nav aria-labelledby="footer-explore">
+            <h2 id="footer-explore">Explore</h2>
+            <ul>
+              <li><a href="./">Home</a></li>
+              <li><a href="docs.html">Docs</a></li>
+              <li><a href="design.html">Design kit</a></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="footer-more">
+            <h2 id="footer-more">More from Declan</h2>
+            <ul>
+              <li><a href="../personal-site/" target="_blank" rel="noopener noreferrer">Personal site<span class="visually-hidden"> (opens in new tab)</span></a></li>
+              <li><a href="../">All senior projects</a></li>
+            </ul>
+          </nav>
+        </div>
+        <p class="site-footer__legal">Visual prototype, 2026. Features shown here aren't working yet.</p>
+      </div>
+    </footer>
+  </body>
+</html>
