@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sparkplug 3D model · Spark</title>
-    <meta name="description" content="3D-printable STL files for the Sparkplug controller: enclosure, knob caps and Ignite button." />
+    <title>Sparkplug model · Spark</title>
+    <meta name="description" content="The Sparkplug controller model: renders, size and hole dimensions." />
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="css/docs.css" />
     <link rel="stylesheet" href="css/page.css" />
     <script src="js/docs.js" defer></script>
-    <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }</script>
-    <script src="js/model-viewer.js" type="module"></script>
     <!-- ================= Header (same on every page) ================= -->
     <header class="site-header">
       <div class="container site-header__inner">
@@ -42,34 +40,18 @@
     <main id="main">
       <header class="docs-hero">
         <div class="container">
-          <p class="eyebrow"><span class="hemi-dot" aria-hidden="true"></span> Sparkplug 3D model</p>
-          <h1>Build the Sparkplug</h1>
-          <p class="lead">STL files for 3D printing the controller: the enclosure, the knob caps and the Ignite dome.</p>
-          <div class="cluster page-actions">
-            <a class="btn btn--primary" href="models/sparkplug-enclosure.stl" download>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14" /></svg>
-              Download the enclosure STL
-            </a>
-            <a class="btn btn--secondary" href="#files">See all files</a>
-          </div>
+          <p class="eyebrow"><span class="hemi-dot" aria-hidden="true"></span> Sparkplug model</p>
+          <h1>The Sparkplug</h1>
+          <p class="lead">The controller you hold to explore your Spark: a joystick, 3 knobs, 4 buttons and a big Ignite dome.</p>
         </div>
       </header>
 
       <div class="container page-body">
         <section class="model" aria-labelledby="model-title">
           <h2 id="model-title" class="visually-hidden">Model preview</h2>
-          <div class="model__stage" id="model-stage">
+          <div class="model__stage">
             <img class="model__still" src="images/sparkplug-3q.webp" width="1200" height="750"
                  alt="The Sparkplug controller: a rounded cream box with a joystick on the left, three blue knobs along the back, a big orange half-sphere Ignite button in the middle, and four navy buttons on the right." />
-            <canvas class="model__canvas" hidden aria-label="Interactive 3D view of the Sparkplug. Drag to turn it, scroll or pinch to zoom."></canvas>
-            <p class="model__status" role="status" aria-live="polite"></p>
-          </div>
-          <div class="cluster model__controls">
-            <button class="btn btn--secondary" type="button" id="model-load">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 7.5 12 3 3 7.5v9L12 21l9-4.5z" /><path d="M3 7.5 12 12l9-4.5M12 12v9" /></svg>
-              Turn it around in 3D
-            </button>
-            <p class="model__hint" id="model-hint">Loads a 3D viewer (about 1 MB).</p>
           </div>
           <figure class="model__top">
             <img src="images/sparkplug-top.webp" width="1200" height="750" loading="lazy"
@@ -79,7 +61,7 @@
         </section>
 
         <!-- Copy lives in content/pages/sparkplug-model.md -->
-        <article class="prose page-prose" data-heading-level="2" id="files" data-doc="content/pages/sparkplug-model.md"><p class="prose__loading">Loading…</p></article>
+        <article class="prose page-prose" data-heading-level="2" data-doc="content/pages/sparkplug-model.md"><p class="prose__loading">Loading…</p></article>
         <p class="docs-back"><a class="btn btn--secondary" href="./#sparkplug">Back to Sparkplug</a></p>
       </div>
     </main>

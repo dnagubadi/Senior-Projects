@@ -4,7 +4,7 @@ Spark is one tool that has to work for any subject. Three parts of the framework
 
 A journey is a game template that the AI fills in for whatever subject you pick. The plan is 4 to 5 journeys. The same journey can become an ocean, a volcano or a band, because the AI supplies the world, the characters and the goals.
 
-**See an example:** [The Expedition](journey.html) is a draft journey, filled in as a Volcano Spark and an Ocean Spark.
+**See an example:** [Sound Lab](journey.html) has wireframes for a sound journey: recording, pedals, visualizers and a recorder.
 
 # The Spark format
 

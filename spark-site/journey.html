@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Expedition · Example journey · Spark</title>
-    <meta name="description" content="An example Spark journey, The Expedition, filled in for a Volcano Spark and an Ocean Spark." />
+    <title>Sound Lab · Example journey · Spark</title>
+    <meta name="description" content="Sound Lab, an example Spark journey: wireframes for recording, pedals, visualizers and a three-lane recorder." />
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/docs.css" />
     <link rel="stylesheet" href="css/page.css" />
-    <script src="js/docs.js" defer></script>
+    <link rel="stylesheet" href="css/wireframe.css" />
     <!-- ================= Header (same on every page) ================= -->
     <header class="site-header">
       <div class="container site-header__inner">
@@ -41,14 +41,161 @@
       <header class="docs-hero">
         <div class="container">
           <p class="eyebrow"><span class="hemi-dot" aria-hidden="true"></span> Example journey</p>
-          <h1>The Expedition</h1>
-          <p class="lead">One game template the AI can fill in for any subject. Here it is as a Volcano Spark and an Ocean Spark.</p>
+          <h1>Sound Lab</h1>
+          <p class="lead">Wireframes for one journey: record your voice, bend it with pedals, see what the sound is made of, and stack it into a track. Two ways to start, two pedalboards, two visualizers and a recorder.</p>
         </div>
       </header>
 
-      <div class="container page-body">
-        <!-- Copy lives in content/pages/example-journey.md -->
-        <article class="prose page-prose" data-heading-level="2" data-doc="content/pages/example-journey.md"><p class="prose__loading">Loading…</p></article>
+      <!-- Wireframe board. Each <figure> is one screen; edit the text right here. -->
+      <div class="container wf-board">
+        <section class="wf-group" aria-labelledby="wf-welcome">
+          <h2 class="wf-group__title" id="wf-welcome">1. Welcome: two ways in</h2>
+          <div class="wf-row wf-row--2">
+          <figure class="wf-frame" aria-labelledby="wf-1a">
+            <p class="wf-frame__label" id="wf-1a"><span class="wf-id">1a</span> <strong>Welcome:</strong> guided path (“do this, then this”)</p>
+            <div class="wf-screen">
+              <div class="wf-screen__bar" aria-hidden="true"><span>Kiosk screen · 1440 × 900</span><span>Welcome</span></div>
+              <div class="wf-screen__body">
+                <div class="wf-head"><p class="wf-h">Make a sound.</p><div class="wf-head__aside"><span class="wf-btn wf-btn--sm">Aa ↖ Bigger text</span><p class="wf-sub">always visible, top-right</p></div></div>
+                <ol class="wf-cluster wf-steps">
+                  <li class="wf-box"><span class="wf-cluster"><span class="wf-num wf-num--fill">1</span><strong>Record</strong></span><span class="wf-lines" aria-hidden="true"><span></span><span></span></span></li>
+                  <li class="wf-box wf-box--dashed is-later"><span class="wf-cluster"><span class="wf-num">2</span>Add effects</span><span class="wf-lines" aria-hidden="true"><span></span><span></span></span></li>
+                  <li class="wf-box wf-box--dashed is-later"><span class="wf-cluster"><span class="wf-num">3</span>Build a track</span><span class="wf-lines" aria-hidden="true"><span></span><span></span></span></li>
+                </ol>
+                <div class="wf-box wf-box--tint wf-callout">
+                  <span class="wf-rec">REC</span>
+                  <div><p class="wf-quote wf-flush">Say something into the mic →</p><p class="wf-sub">Press SPACE or click the big button. Nothing is saved or sent anywhere.</p></div>
+                </div>
+                <div class="wf-cluster"><span class="wf-chip">▢ no headphones? captions on</span><span class="wf-chip">▢ TAB moves · SPACE does</span><span class="wf-chip">↺ start over</span></div>
+              </div>
+            </div>
+          </figure>
+          <figure class="wf-frame" aria-labelledby="wf-1b">
+            <p class="wf-frame__label" id="wf-1b"><span class="wf-id">1b</span> <strong>Welcome:</strong> free playground (three doors)</p>
+            <div class="wf-screen">
+              <div class="wf-screen__bar" aria-hidden="true"><span>Kiosk screen · 1440 × 900</span><span>Welcome</span></div>
+              <div class="wf-screen__body">
+                <div class="wf-head"><div><p class="wf-h">The Sound Lab</p><p class="wf-sub">Pick anything. You can't break it.</p></div><span class="wf-btn wf-btn--sm">Aa ↖ Bigger text</span></div>
+                <div class="wf-cluster wf-doors"><div class="wf-box wf-door"><div class="wf-placeholder-art">waveform<br>illustration</div><p class="wf-door__title">See a sound</p><span class="wf-lines" aria-hidden="true"><span></span><span></span></span><span class="wf-btn wf-btn--block wf-btn--fill">Open</span></div><div class="wf-box wf-door"><div class="wf-placeholder-art">pedal<br>illustration</div><p class="wf-door__title">Bend a sound</p><span class="wf-lines" aria-hidden="true"><span></span><span></span></span><span class="wf-btn wf-btn--block">Open</span></div><div class="wf-box wf-door"><div class="wf-placeholder-art">3 lanes<br>illustration</div><p class="wf-door__title">Stack sounds</p><span class="wf-lines" aria-hidden="true"><span></span><span></span></span><span class="wf-btn wf-btn--block">Open</span></div></div>
+                <div class="wf-box wf-box--dashed wf-cluster"><strong class="wf-label">Or try a challenge:</strong><span class="wf-btn wf-btn--sm">make it SPOOKY</span><span class="wf-btn wf-btn--sm">make it TINY</span><span class="wf-btn wf-btn--sm">make it a ROBOT</span></div>
+              </div>
+            </div>
+            <figcaption class="wf-note">Free choice, with challenges as the optional “what do I do?” ramp. Better for repeat visitors and older teens; a 10-year-old may need staff nudging.</figcaption>
+          </figure>
+          </div>
+        </section>
+
+        <section class="wf-group" aria-labelledby="wf-pedals">
+          <h2 class="wf-group__title" id="wf-pedals">2. Pedalboard: guided or playground</h2>
+          <div class="wf-row wf-row--2">
+          <figure class="wf-frame" aria-labelledby="wf-1c">
+            <p class="wf-frame__label" id="wf-1c"><span class="wf-id">1c</span> <strong>Pedalboard:</strong> guided, one pedal at a time</p>
+            <div class="wf-screen">
+              <div class="wf-screen__bar" aria-hidden="true"><span>Kiosk screen · 1440 × 900</span><span>Effects · step 2 of 3</span></div>
+              <div class="wf-screen__body">
+                <div class="wf-progress" aria-hidden="true"><span class="is-done"></span><span class="is-now"></span><span></span><b class="wf-mono">Step 2 / 3</b></div>
+                <p class="wf-h wf-gap">Turn one knob. Watch what happens.</p>
+                <div class="wf-box wf-cluster wf-split wf-gap">
+                  <div class="wf-box wf-dial"><p class="wf-mono wf-strong">Reverb</p><div class="wf-knob">60</div><p class="wf-mono wf-tiny">Small room → big cave</p></div>
+                  <div class="wf-stack wf-grow">
+                    <div class="wf-box wf-box--dashed"><p class="wf-mono wf-flush">What you're hearing · live caption</p><p class="wf-quote">“Your voice now echoes, like you're in a big empty hall. The tail lasts about 2 seconds.”</p></div>
+                    <div class="wf-box wf-box--soft"><div class="wf-bars" aria-hidden="true"><span style="height:20%"></span><span style="height:45%"></span><span style="height:85%"></span><span style="height:65%"></span><span class="is-accent" style="height:40%"></span><span class="is-accent" style="height:32%"></span><span class="is-accent" style="height:26%"></span><span class="is-accent" style="height:20%"></span><span class="is-accent" style="height:14%"></span><span class="is-accent" style="height:8%"></span></div></div>
+                    <p class="wf-sub wf-flush">orange = the echo the pedal added</p>
+                  </div>
+                </div>
+                <div class="wf-cluster wf-cluster--between wf-gap-sm"><span class="wf-cluster"><span class="wf-btn wf-btn--fill">■ Hear it</span><span class="wf-btn">A / B off vs on</span></span><span class="wf-btn">Next pedal ›</span></div>
+                <div class="wf-cluster"><span class="wf-chip wf-chip--locked">Distortion · locked until step 3</span><span class="wf-chip wf-chip--locked">Filter / EQ · locked</span></div>
+              </div>
+            </div>
+            <figcaption class="wf-note">Only one thing on screen can change, so cause and effect is unmissable. The live caption and colour-coded waveform carry the whole lesson without audio.</figcaption>
+          </figure>
+          <figure class="wf-frame" aria-labelledby="wf-1d">
+            <p class="wf-frame__label" id="wf-1d"><span class="wf-id">1d</span> <strong>Pedalboard:</strong> playground, build the chain</p>
+            <div class="wf-screen">
+              <div class="wf-screen__bar" aria-hidden="true"><span>Kiosk screen · 1440 × 900</span><span>Pedalboard</span></div>
+              <div class="wf-screen__body">
+                <div class="wf-head"><p class="wf-h">Your pedal chain</p><p class="wf-mono wf-flush">Challenge: make it spooky</p></div>
+                <div class="wf-box wf-box--tint wf-gap">
+                  <div class="wf-chain">
+                    <span class="wf-pedal wf-pedal--io">Your<br>voice</span><span class="wf-chain__arrow" aria-hidden="true">→</span>
+                    <span class="wf-pedal">Reverb<span class="wf-knob wf-knob--sm"></span><span class="wf-toggle"></span><span class="wf-mono wf-tiny">on</span></span><span class="wf-chain__arrow" aria-hidden="true">→</span>
+                    <span class="wf-pedal">Filter<span class="wf-knob wf-knob--sm"></span><span class="wf-toggle"></span><span class="wf-mono wf-tiny">on</span></span><span class="wf-chain__arrow" aria-hidden="true">→</span>
+                    <span class="wf-pedal wf-pedal--add">+<br>add a<br>pedal</span><span class="wf-chain__arrow" aria-hidden="true">→</span>
+                    <span class="wf-pedal wf-pedal--io">Out</span>
+                  </div>
+                </div>
+                <div class="wf-cluster wf-split wf-gap">
+                  <div class="wf-box wf-box--dashed wf-grow"><p class="wf-mono wf-flush">Shelf · click or press 1–3 to add</p><div class="wf-shelf"><span class="wf-pedal">Distort<small>gritty</small></span><span class="wf-pedal">Reverb<small>roomy</small></span><span class="wf-pedal">Filter<small>muffly</small></span></div></div>
+                  <div class="wf-box wf-grow"><p class="wf-mono wf-flush">Live caption</p><p class="wf-quote">“Echoey and muffled, like a voice behind a door.”</p></div>
+                </div>
+                <div class="wf-cluster wf-cluster--between"><span class="wf-cluster"><span class="wf-btn wf-btn--fill">■ Play chain</span><span class="wf-btn">A / B</span></span><span class="wf-sub wf-flush">drag to reorder · or SHIFT + ← → with keyboard</span></div>
+              </div>
+            </div>
+            <figcaption class="wf-note">Order of operations becomes the lesson: the same two pedals sound different when swapped. Drag has a keyboard equivalent, so it isn't the only way in.</figcaption>
+          </figure>
+          </div>
+        </section>
+
+        <section class="wf-group" aria-labelledby="wf-see">
+          <h2 class="wf-group__title" id="wf-see">3. See it and stack it</h2>
+          <div class="wf-row wf-row--3">
+          <figure class="wf-frame" aria-labelledby="wf-1e">
+            <p class="wf-frame__label" id="wf-1e"><span class="wf-id">1e</span> <strong>Visualizer A:</strong> the ribbon (sound over time)</p>
+            <div class="wf-screen">
+              <div class="wf-screen__bar" aria-hidden="true"><span>Panel</span><span>Visualizer A</span></div>
+              <div class="wf-screen__body">
+                <p class="wf-h wf-gap">Waveform</p>
+                <div class="wf-box wf-gap-sm"><div class="wf-bars wf-bars--center" aria-hidden="true"><span style="height:14%"></span><span style="height:30%"></span><span style="height:52%"></span><span style="height:90%"></span><span class="is-accent" style="height:100%"></span><span style="height:64%"></span><span style="height:42%"></span><span style="height:38%"></span><span style="height:26%"></span><span style="height:46%"></span><span style="height:34%"></span><span style="height:14%"></span></div><div class="wf-axis wf-mono" aria-hidden="true"><span>0s</span><span>← time →</span><span>4s</span></div></div>
+                <div class="wf-cluster wf-split wf-gap-sm"><div class="wf-box wf-box--dashed wf-grow"><p class="wf-mono wf-strong">Tall = loud</p><p class="wf-sub">the peak is your loudest moment</p></div><div class="wf-box wf-box--dashed wf-grow"><p class="wf-mono wf-strong">Flat = silence</p><p class="wf-sub">the gaps between words</p></div></div>
+                <div class="wf-box wf-box--soft"><p class="wf-sub wf-flush">SCREEN READER: “Loudness graph. Peak at 1.4 seconds, 92 percent. Three quiet gaps.” Plus a text summary under the graph.</p></div>
+              </div>
+            </div>
+            <figcaption class="wf-note">Familiar and literal. It maps to the recorder in 1g, so kids learn one picture and reuse it. Shows volume well, timbre badly.</figcaption>
+          </figure>
+          <figure class="wf-frame" aria-labelledby="wf-1f">
+            <p class="wf-frame__label" id="wf-1f"><span class="wf-id">1f</span> <strong>Visualizer B:</strong> the pie (what the sound is made of)</p>
+            <div class="wf-screen">
+              <div class="wf-screen__bar" aria-hidden="true"><span>Panel</span><span>Visualizer B</span></div>
+              <div class="wf-screen__body">
+                <p class="wf-h wf-gap">EQ</p>
+                <div class="wf-box wf-eq wf-gap-sm">
+                  <div class="wf-rings" aria-hidden="true"></div>
+                  <div class="wf-meters">
+                    <div class="wf-meter"><span class="wf-mono">Low</span><span class="wf-meter__track"><span class="wf-meter__fill" style="width:85%"></span></span></div>
+                    <div class="wf-meter"><span class="wf-mono">Middle</span><span class="wf-meter__track"><span class="wf-meter__fill" style="width:50%"></span></span></div>
+                    <div class="wf-meter"><span class="wf-mono">High</span><span class="wf-meter__track"><span class="wf-meter__fill is-accent" style="width:20%"></span></span></div>
+                    <p class="wf-sub wf-flush">Bars grow as you speak. Ring size = same data, bigger and prettier for across-the-room viewing.</p>
+                  </div>
+                </div>
+                <div class="wf-box wf-gap-sm"><p class="wf-quote wf-flush">“Mostly low. That's why it sounds like a rumble.”</p></div>
+                <div class="wf-box wf-box--soft"><p class="wf-sub wf-flush">Pattern + label on every band, never colour alone. Works for colourblind visitors and reads at 2 m.</p></div>
+              </div>
+            </div>
+            <figcaption class="wf-note">Teaches the thing the pedals actually change (frequency), so the filter/EQ pedal in 1d becomes visible. A harder concept, so it needs the plain-language line under it.</figcaption>
+          </figure>
+          <figure class="wf-frame" aria-labelledby="wf-1g">
+            <p class="wf-frame__label" id="wf-1g"><span class="wf-id">1g</span> <strong>Recorder:</strong> three lanes, one timeline</p>
+            <div class="wf-screen">
+              <div class="wf-screen__bar" aria-hidden="true"><span>Kiosk screen · 1440 × 900</span><span>Tracks</span></div>
+              <div class="wf-screen__body">
+                <div class="wf-head"><p class="wf-h">Stack up to 3 sounds</p><p class="wf-mono wf-flush">8 seconds max · keeps the queue moving</p></div>
+                <div class="wf-lanes wf-gap">
+                  <span class="wf-rec wf-rec--sm">REC<br>space</span>
+                  <div class="wf-lanes__list">
+                    <div class="wf-lane"><span class="wf-mono">1 · Voice</span><span class="wf-lane__track"><div class="wf-bars" aria-hidden="true"><span style="height:45%"></span><span style="height:70%"></span><span style="height:70%"></span><span style="height:95%"></span><span style="height:60%"></span><span style="height:75%"></span><span style="height:30%"></span><span style="height:55%"></span><span style="height:15%"></span><span style="height:15%"></span></div></span><span class="wf-mute" aria-hidden="true"></span></div>
+                    <div class="wf-lane"><span class="wf-mono">2 · Clap</span><span class="wf-lane__track"><div class="wf-bars" aria-hidden="true"><span class="is-accent" style="height:100%"></span><span style="height:8%"></span><span style="height:8%"></span><span class="is-accent" style="height:100%"></span><span style="height:8%"></span><span style="height:8%"></span><span class="is-accent" style="height:100%"></span><span style="height:8%"></span><span style="height:8%"></span><span class="is-accent" style="height:100%"></span></div></span><span class="wf-mute" aria-hidden="true"></span></div>
+                    <div class="wf-lane"><span class="wf-mono">3 · Empty</span><span class="wf-lane__track wf-lane__track--empty"><span class="wf-sub wf-flush">press REC to fill this lane</span></span><span class="wf-mute wf-mute--empty" aria-hidden="true"></span></div>
+                  </div>
+                </div>
+                <div class="wf-cluster wf-cluster--between wf-gap-sm"><span class="wf-cluster"><span class="wf-btn wf-btn--fill">■ Play all</span><span class="wf-btn">↺ Undo</span><span class="wf-btn">Send to pedals ›</span></span><span class="wf-btn wf-btn--dashed">Clear &amp; finish</span></div>
+                <div class="wf-box wf-box--soft"><p class="wf-sub wf-flush">NO TINY HANDLES: lanes can't be trimmed or dragged. You record, you mute, you undo. Three verbs total.</p></div>
+              </div>
+            </div>
+            <figcaption class="wf-note">Deliberately not a music editor: a fixed 8-second window, no trimming, no zoom. Same waveform language as 1e.</figcaption>
+          </figure>
+          </div>
+        </section>
+
         <p class="docs-back"><a class="btn btn--secondary" href="./#frameworks">Back to Frameworks</a></p>
       </div>
     </main>

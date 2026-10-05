@@ -67,8 +67,8 @@ Lives in `spark-site/`. **Current scope: the project docs page, linked from the 
 | Page | File |
 | --- | --- |
 | Docs (the live page) | `spark-site/index.html` |
-| Example journey (linked from Frameworks) | `spark-site/journey.html`, copy in `content/pages/example-journey.md` |
-| Sparkplug 3D model (linked from Sparkplug) | `spark-site/sparkplug.html`, copy in `content/pages/sparkplug-model.md` |
+| Example journey, Sound Lab wireframes (linked from Frameworks) | `spark-site/journey.html`; edit the text in each `<figure>`, styles in `css/wireframe.css` |
+| Sparkplug model (linked from Sparkplug) | `spark-site/sparkplug.html`, copy in `content/pages/sparkplug-model.md`, renders in `images/` |
 | Home (parked) | `spark-site/home.html` |
 | Design kit, every component and state (parked) | `spark-site/design.html` |
 
@@ -76,15 +76,13 @@ Lives in `spark-site/`. **Current scope: the project docs page, linked from the 
 
 **Edit the parked home page copy** directly in `spark-site/home.html`. Placeholders there are `<mark class="placeholder">[...]</mark>`; search for `placeholder` to find every one left to fill in.
 
-**Sparkplug STL files** are in `spark-site/models/`, made by the Blender script `models/sparkplug.py`. Change the sizes under SETTINGS, then run `/Applications/Blender.app/Contents/MacOS/Blender -b --python sparkplug.py` from that folder. It rewrites the STLs and the preview pictures in `images/`. The 3D viewer loads three.js from jsDelivr only when someone presses its button.
-
 **Design tokens and styles** are in `spark-site/css/`:
 
 - `tokens.css`: every color, font, type size, spacing, radius and shadow, with contrast ratios noted. Change the look here.
 - `base.css`: element defaults, links, focus rings, placeholder style.
 - `layout.css`: container, header, footer, sections, rows.
 - `components.css`: buttons, cards, tags, badges, form controls, callouts, the hemisphere.
-- `docs.css`, `page.css`, `home.css`, `design.css`: page-specific styles.
+- `docs.css`, `page.css`, `wireframe.css`, `home.css`, `design.css`: page-specific styles.
 
 Fonts are Bricolage Grotesque (headings, buttons) and Atkinson Hyperlegible Next (body), loaded from Google Fonts. Still to check by hand: screen reader, full keyboard walk-through, and 400% zoom.
 

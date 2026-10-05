@@ -16,6 +16,6 @@ When a new Spark loads, the AI relabels every control, so one controller works f
 - **First prototype:** wired up with an Arduino.
 - **Final version:** a custom enclosure made with woodworking and 3D printing.
 
-**See the 3D model:** [Build the Sparkplug](sparkplug.html) has a 3D preview and STL files you can print.
+**See the model:** [The Sparkplug](sparkplug.html) has renders of the controller and its dimensions.
 
 ![The Sparkplug controller: joystick on the left, three knobs along the back, an orange half-sphere Ignite button in the middle and four buttons on the right.](images/sparkplug-3q.webp)
